@@ -26,3 +26,4 @@ This project is free and open for everyone to use, learn from, and build upon un
 
 ---
 *Built by Nidal Ben yakhelf.* ☕
+*GitHub: [@nidalbenyakhelf](https://github.com/nidalbenyakhelf)*
