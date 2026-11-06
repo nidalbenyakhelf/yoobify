@@ -37,7 +37,10 @@ This file contains personal notes, ideas, and observations for the yoobify proje
 - [ ] Add "Copy Results" button to share playlist analysis
 - [ ] Show playlist duration and average BPM
 - [ ] Add filtering options (by genre, language, year)
-
+### 🔌 Architecture & Infrastructure (Future)
+- [ ] **Build Custom CORS Proxy**: Currently relying on `corsproxy.io` as a temporary workaround for Deezer API. 
+  - *Future Plan*: Build a lightweight, serverless proxy using **Cloudflare Workers** or **Vercel Edge Functions**. 
+  - *Benefits*: Full control over rate limiting, no dependency on third-party free services, and preparation for Spotify/Apple Music APIs which require secure backend handling of OAuth tokens and API keys.
 ### Long-term
 - [ ] Machine learning model for music similarity
 - [ ] Social features (follow users, share discoveries)
