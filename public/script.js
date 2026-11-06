@@ -1,7 +1,7 @@
 /**
  * yoobify - Main Application Logic
  * Uses Deezer JSONP API to bypass CORS restrictions
- * Version: 0.2.1
+ * Version: 0.3.0
  */
 
 (function() {
@@ -37,7 +37,7 @@
         nav: document.querySelector('.site-header nav'),
         randomBtn: document.getElementById('random-btn'),
         exploreBtn: document.getElementById('explore-btn'),
-        platformBtns: document.querySelectorAll('.platform-btn')
+        faqItems: document.querySelectorAll('.faq-item')
     };
 
     // ===== Utility Functions =====
@@ -295,16 +295,26 @@
             }
         },
 
-        handlePlatformSelection(e) {
-            const platform = e.target.dataset.platform;
-            
-            if (platform === 'all') {
-                DOM.platformBtns.forEach(btn => btn.classList.add('active'));
-            } else {
-                const allBtn = document.querySelector('[data-platform="all"]');
-                if (allBtn) allBtn.classList.remove('active');
-                e.target.classList.toggle('active');
-            }
+        handleFAQAccordion() {
+            DOM.faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    DOM.faqItems.forEach(faq => {
+                        faq.classList.remove('active');
+                        faq.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
         },
 
         handleMobileMenu() {
@@ -319,11 +329,10 @@
                 DOM.nav.style.right = '0';
                 DOM.nav.style.left = '0';
                 DOM.nav.style.background = '#FFFFFF';
-                DOM.nav.style.borderBottom = '1px solid rgba(139, 92, 246, 0.1)';
+                DOM.nav.style.borderBottom = '3px solid var(--color-border)';
                 DOM.nav.style.padding = '1rem';
                 DOM.nav.style.gap = '0.5rem';
                 DOM.nav.style.zIndex = '99';
-                DOM.nav.style.boxShadow = '0 4px 6px -1px rgba(139, 92, 246, 0.1)';
             });
         },
 
@@ -352,42 +361,31 @@
 
     // ===== Initialization =====
     function init() {
-        // Form submit
         if (DOM.form) {
             DOM.form.addEventListener('submit', Handlers.handleFormSubmit);
         }
         
-        // Reset button
         if (DOM.resetBtn) {
             DOM.resetBtn.addEventListener('click', Handlers.handleReset);
         }
         
-        // Random playlist button
         if (DOM.randomBtn) {
             DOM.randomBtn.addEventListener('click', Handlers.handleRandomPlaylist);
         }
         
-        // Explore trends button
         if (DOM.exploreBtn) {
             DOM.exploreBtn.addEventListener('click', Handlers.handleExploreTrends);
         }
         
-        // Platform selection
-        DOM.platformBtns.forEach(btn => {
-            btn.addEventListener('click', Handlers.handlePlatformSelection);
-        });
-        
-        // Mobile menu and smooth scroll
+        Handlers.handleFAQAccordion();
         Handlers.handleMobileMenu();
         Handlers.handleSmoothScroll();
         
-        // Load contributors
         UI.renderContributors();
         
-        console.log('yoobify initialized successfully. Version 0.2.1');
+        console.log('yoobify initialized successfully. Version 0.3.0');
     }
 
-    // Run initialization when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
