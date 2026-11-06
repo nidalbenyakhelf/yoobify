@@ -42,35 +42,8 @@
             <h1>Discover the hidden connections in the music we love.</h1>
             <p class="hero-subtitle">Find common tracks between playlists and explore similar music across different cultures and languages.</p>
             
-            <!-- Simple Search Bar -->
+            <!-- Simple Search Bar (No Platform Dropdown) -->
             <div class="search-bar">
-                <div class="platform-selector">
-                    <div class="platform-dropdown">
-                        <button class="platform-dropdown-btn" id="platform-btn">
-                            <span id="selected-platform">Select Platform</span>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                        <div class="platform-dropdown-menu" id="platform-menu">
-                            <div class="platform-option active" data-platform="all">
-                                <i class="fa-solid fa-globe"></i>
-                                <span>All Platforms</span>
-                            </div>
-                            <div class="platform-option" data-platform="deezer">
-                                <i class="fa-brands fa-deezer"></i>
-                                <span>Deezer</span>
-                            </div>
-                            <div class="platform-option" data-platform="spotify">
-                                <i class="fa-brands fa-spotify"></i>
-                                <span>Spotify</span>
-                            </div>
-                            <div class="platform-option" data-platform="apple">
-                                <i class="fa-brands fa-apple"></i>
-                                <span>Apple Music</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
                 <form id="playlist-form" class="input-box">
                     <input 
                         type="url" 
@@ -108,14 +81,11 @@
         </div>
 
         <div class="hero-illustration">
-            <!-- Hero SVG Illustration - Vinyl Record Style -->
             <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Background circles -->
                 <circle cx="250" cy="250" r="200" fill="none" stroke="#1A1A1A" stroke-width="3" opacity="0.15"/>
                 <circle cx="250" cy="250" r="170" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="8 8" opacity="0.25"/>
                 <circle cx="250" cy="250" r="140" fill="none" stroke="#1A1A1A" stroke-width="2" opacity="0.2"/>
                 
-                <!-- Central vinyl record -->
                 <circle cx="250" cy="250" r="110" fill="none" stroke="#1A1A1A" stroke-width="3"/>
                 <circle cx="250" cy="250" r="90" fill="none" stroke="#1A1A1A" stroke-width="2"/>
                 <circle cx="250" cy="250" r="70" fill="none" stroke="#1A1A1A" stroke-width="2"/>
@@ -123,35 +93,28 @@
                 <circle cx="250" cy="250" r="30" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="3"/>
                 <circle cx="250" cy="250" r="10" fill="#1A1A1A"/>
                 
-                <!-- Grooves on vinyl -->
                 <circle cx="250" cy="250" r="100" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.4"/>
                 <circle cx="250" cy="250" r="80" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.4"/>
                 <circle cx="250" cy="250" r="60" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.4"/>
                 
-                <!-- Music notes floating -->
                 <g stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round">
-                    <!-- Note 1 (top-left) -->
                     <path d="M 100 120 L 100 170"/>
                     <ellipse cx="100" cy="175" rx="15" ry="10" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2.5"/>
                     <path d="M 100 120 Q 125 115 140 125"/>
                     
-                    <!-- Note 2 (top-right) -->
                     <path d="M 400 140 L 400 190"/>
                     <ellipse cx="400" cy="195" rx="15" ry="10" fill="#06B6D4" stroke="#1A1A1A" stroke-width="2.5"/>
                     <path d="M 400 140 Q 375 135 360 145"/>
                     
-                    <!-- Note 3 (bottom-left) -->
                     <path d="M 120 380 L 120 430"/>
                     <ellipse cx="120" cy="435" rx="15" ry="10" fill="#FBCFE8" stroke="#1A1A1A" stroke-width="2.5"/>
                     <path d="M 120 380 Q 145 375 160 385"/>
                     
-                    <!-- Note 4 (bottom-right) -->
                     <path d="M 380 360 L 380 410"/>
                     <ellipse cx="380" cy="415" rx="15" ry="10" fill="#BBF7D0" stroke="#1A1A1A" stroke-width="2.5"/>
                     <path d="M 380 360 Q 355 355 340 365"/>
                 </g>
                 
-                <!-- Connection lines -->
                 <g stroke="#1A1A1A" stroke-width="2.5" opacity="0.5">
                     <line x1="250" y1="50" x2="250" y2="140"/>
                     <line x1="250" y1="360" x2="250" y2="450"/>
@@ -159,7 +122,6 @@
                     <line x1="360" y1="250" x2="450" y2="250"/>
                 </g>
                 
-                <!-- Small decorative dots -->
                 <circle cx="170" cy="90" r="6" fill="#8B5CF6"/>
                 <circle cx="340" cy="100" r="5" fill="#06B6D4"/>
                 <circle cx="110" cy="310" r="6" fill="#FBCFE8"/>
@@ -167,7 +129,6 @@
                 <circle cx="200" cy="420" r="5" fill="#E0F2FE"/>
                 <circle cx="310" cy="430" r="6" fill="#FCE7F3"/>
                 
-                <!-- Sound waves -->
                 <path d="M 50 200 Q 80 180 110 200 T 170 200" fill="none" stroke="#8B5CF6" stroke-width="2.5" opacity="0.6"/>
                 <path d="M 330 200 Q 360 180 390 200 T 450 200" fill="none" stroke="#06B6D4" stroke-width="2.5" opacity="0.6"/>
                 <path d="M 50 300 Q 80 320 110 300 T 170 300" fill="none" stroke="#FBCFE8" stroke-width="2.5" opacity="0.8"/>
@@ -194,51 +155,62 @@
         </div>
     </section>
 
-    <!-- How It Works -->
+    <!-- How It Works - Half Cards (Text + Illustration) -->
     <section id="how-it-works" class="section">
         <h2>How it works</h2>
         <p class="section-subtitle">Three simple steps to discover music across borders.</p>
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="10" y="15" width="40" height="30" rx="3" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <line x1="20" y1="25" x2="40" y2="25" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
-                        <line x1="20" y1="32" x2="35" y2="32" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="20" y1="39" x2="30" y2="39" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="45" cy="10" r="8" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2"/>
-                        <path d="M 42 10 L 44 12 L 48 8" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <div class="half-cards-container">
+            <div class="half-card">
+                <div class="half-card-content">
+                    <h3>1. Paste Your Playlists</h3>
+                    <p>Drop links from Spotify or Deezer. You can paste multiple playlists to compare them and find the hidden connections between your favorite songs.</p>
+                </div>
+                <div class="half-card-illustration">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="40" width="140" height="120" rx="8" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+                        <line x1="50" y1="70" x2="150" y2="70" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="50" y1="90" x2="130" y2="90" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="50" y1="110" x2="110" y2="110" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="50" y1="130" x2="90" y2="130" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="160" cy="30" r="20" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="3"/>
+                        <path d="M 155 30 L 158 33 L 165 25" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <h3>1. Paste Your Playlists</h3>
-                <p>Drop links from Spotify or Deezer. You can paste multiple playlists to compare them.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="25" cy="25" r="15" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <line x1="36" y1="36" x2="48" y2="48" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
-                        <circle cx="25" cy="25" r="8" fill="none" stroke="#06B6D4" stroke-width="2"/>
-                        <path d="M 20 22 L 25 27 L 32 18" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <div class="half-card">
+                <div class="half-card-content">
+                    <h3>2. We Find the Overlap</h3>
+                    <p>Our algorithm identifies songs that appear in multiple playlists and analyzes their shared traits like tempo, mood, and cultural background.</p>
+                </div>
+                <div class="half-card-illustration">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="80" cy="100" r="50" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+                        <circle cx="120" cy="100" r="50" fill="none" stroke="#06B6D4" stroke-width="3"/>
+                        <circle cx="100" cy="100" r="20" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2"/>
+                        <path d="M 60 60 L 140 60" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4 4"/>
+                        <path d="M 60 140 L 140 140" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4 4"/>
                     </svg>
                 </div>
-                <h3>2. We Find the Overlap</h3>
-                <p>Our algorithm identifies songs that appear in multiple playlists and analyzes their shared traits.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="30" cy="30" r="22" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <ellipse cx="30" cy="30" rx="10" ry="22" fill="none" stroke="#1A1A1A" stroke-width="2"/>
-                        <line x1="8" y1="30" x2="52" y2="30" stroke="#1A1A1A" stroke-width="2"/>
-                        <line x1="12" y1="18" x2="48" y2="18" stroke="#1A1A1A" stroke-width="1.5"/>
-                        <line x1="12" y1="42" x2="48" y2="42" stroke="#1A1A1A" stroke-width="1.5"/>
-                        <circle cx="30" cy="30" r="5" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2"/>
-                        <path d="M 45 10 L 50 10 L 50 15" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/>
+            
+            <div class="half-card">
+                <div class="half-card-content">
+                    <h3>3. Discover New Music</h3>
+                    <p>Based on common tracks, we suggest similar songs from other languages and cultures you might love. Expand your musical horizons effortlessly.</p>
+                </div>
+                <div class="half-card-illustration">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="70" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+                        <ellipse cx="100" cy="100" rx="30" ry="70" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+                        <line x1="30" y1="100" x2="170" y2="100" stroke="#1A1A1A" stroke-width="2"/>
+                        <line x1="40" y1="60" x2="160" y2="60" stroke="#1A1A1A" stroke-width="1.5"/>
+                        <line x1="40" y1="140" x2="160" y2="140" stroke="#1A1A1A" stroke-width="1.5"/>
+                        <circle cx="100" cy="100" r="15" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2"/>
+                        <path d="M 150 40 L 165 40 L 165 55" fill="none" stroke="#06B6D4" stroke-width="3" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <h3>3. Discover New Music</h3>
-                <p>Based on common tracks, we suggest similar songs from other languages and cultures you might love.</p>
             </div>
         </div>
     </section>
@@ -358,7 +330,7 @@
             </div>
             <div class="algorithm-illustration">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="100" r="70" fill="none" stroke="#10B981" stroke-width="2.5"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
                     <path d="M 70 80 Q 80 70 90 80 Q 100 70 110 80 Q 120 70 130 80" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
                     <path d="M 70 100 Q 80 90 90 100 Q 100 90 110 100 Q 120 90 130 100" fill="none" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round"/>
                     <path d="M 70 120 Q 80 110 90 120 Q 100 110 110 120 Q 120 110 130 120" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
@@ -418,29 +390,89 @@
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ - Accordion -->
     <section id="faq" class="section">
         <h2>Frequently asked questions</h2>
+        <p class="section-subtitle">Everything you need to know about yoobify.</p>
         <div class="faq-list">
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> Is yoobify free?</h3>
-                <p>Yes, completely free and open source. No ads, no premium plans, no hidden costs.</p>
+                <button class="faq-question" aria-expanded="false">
+                    <h3><i class="fa-solid fa-circle-question"></i> Is yoobify free?</h3>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, completely free and open source. No ads, no premium plans, no hidden costs. We believe music discovery should be accessible to everyone.</p>
+                </div>
             </div>
+            
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> Do I need to create an account?</h3>
-                <p>No. Just paste your playlist links and go. We don't store your personal data.</p>
+                <button class="faq-question" aria-expanded="false">
+                    <h3><i class="fa-solid fa-circle-question"></i> Do I need to create an account?</h3>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>No. Just paste your playlist links and go. We don't store your personal data or require any registration.</p>
+                </div>
             </div>
+            
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> Which platforms are supported right now?</h3>
-                <p>Currently only Spotify and Deezer. We hope to add Apple Music, YouTube Music, SoundCloud, and Anghami in the future, but they are not ready yet.</p>
+                <button class="faq-question" aria-expanded="false">
+                    <h3><i class="fa-solid fa-circle-question"></i> Which platforms are supported right now?</h3>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Currently we support Deezer with full API integration. Spotify support is in development. We hope to add Apple Music, YouTube Music, SoundCloud, and Anghami in the future.</p>
+                </div>
             </div>
+            
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> How accurate is the matching?</h3>
-                <p>We're constantly improving. Right now it's about 85% accurate, and we need your help to make it better.</p>
+                <button class="faq-question" aria-expanded="false">
+                    <h3><i class="fa-solid fa-circle-question"></i> How accurate is the matching?</h3>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>We're constantly improving. Right now it's about 85% accurate, and we need your help to make it better. Our algorithm compares song titles, artists, and duration to find matches.</p>
+                </div>
             </div>
+            
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> Can I contribute to the project?</h3>
-                <p>Absolutely! We need developers, designers, translators, and music lovers. See the section below.</p>
+                <button class="faq-question" aria-expanded="false">
+                    <h3><i class="fa-solid fa-circle-question"></i> Can I use yoobify on my mobile phone?</h3>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! yoobify is fully responsive and works beautifully on all devices. We're also planning to add PWA support so you can install it like a native app.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <h3><i class="fa-solid fa-circle-question"></i> Is my data safe?</h3>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely. We don't store any personal data. All processing happens in your browser, and we only access public playlist information from the APIs.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <h3><i class="fa-solid fa-circle-question"></i> Can I contribute to the project?</h3>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely! We need developers, designers, translators, and music lovers. Check the contribute section below to see how you can help make yoobify better.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <h3><i class="fa-solid fa-circle-question"></i> What languages are supported?</h3>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Currently we support English and Arabic. We're actively looking for translators to help us add French, Spanish, Turkish, and more languages.</p>
+                </div>
             </div>
         </div>
     </section>
