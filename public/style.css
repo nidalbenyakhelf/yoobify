@@ -40,7 +40,7 @@ a {
     text-decoration: none;
 }
 
-/* ===== Header - Simplified ===== */
+/* ===== Header ===== */
 .site-header {
     display: flex;
     justify-content: space-between;
@@ -62,8 +62,10 @@ a {
     color: var(--color-primary);
 }
 
-.logo i {
-    font-size: 1.8rem;
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .site-header nav {
@@ -145,7 +147,7 @@ a {
     line-height: 1.6;
 }
 
-/* ===== Search Bar - Simple ===== */
+/* ===== Search Bar ===== */
 .search-bar {
     width: 100%;
 }
@@ -464,6 +466,10 @@ a {
 }
 
 /* ===== Half Card (Text + Illustration like Brave) ===== */
+.half-cards-container {
+    margin-top: 2rem;
+}
+
 .half-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -516,7 +522,8 @@ a {
     background: var(--color-pastel-purple);
 }
 
-.half-card-illustration svg {
+.half-card-illustration svg,
+.half-card-illustration img {
     width: 100%;
     max-width: 280px;
     height: auto;
@@ -559,7 +566,7 @@ a {
     border-style: dashed;
 }
 
-/* ===== Algorithm Box - No Green Background ===== */
+/* ===== Algorithm Box ===== */
 .algorithm-box {
     background: #FFFFFF;
     border: 3px solid var(--color-border);
@@ -736,6 +743,11 @@ a {
 }
 
 .faq-question h3 i {
+    color: var(--color-text);
+    transition: color 0.2s ease;
+}
+
+.faq-item:hover .faq-question h3 i {
     color: var(--color-primary);
 }
 
@@ -971,6 +983,11 @@ a {
     color: var(--color-primary);
 }
 
+.footer-section h3 img {
+    width: 24px;
+    height: 24px;
+}
+
 .footer-section ul {
     list-style: none;
     padding: 0;
@@ -1008,6 +1025,39 @@ a {
 }
 
 .footer-bottom i {
+    color: var(--color-primary);
+}
+
+/* ===== Unified Icon Colors ===== */
+
+/* Platform icons - Unified black/dark color */
+.platform-logo i {
+    color: var(--color-text) !important;
+    font-size: 3.5rem !important;
+    transition: all 0.2s ease;
+}
+
+.platform-card:hover .platform-logo i {
+    color: var(--color-primary);
+}
+
+/* Need card icons - Unified dark color */
+.card-icon i {
+    color: var(--color-text) !important;
+    font-size: 3.5rem !important;
+    transition: all 0.2s ease;
+}
+
+.need-card:hover .card-icon i {
+    color: var(--color-primary);
+}
+
+/* FAQ icons */
+.faq-item h3 i {
+    color: var(--color-text) !important;
+}
+
+.faq-item:hover h3 i {
     color: var(--color-primary);
 }
 
