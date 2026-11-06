@@ -15,6 +15,12 @@
     --color-primary-hover: #7C3AED;
     --color-secondary: #06B6D4;
     
+    /* Tech Card Colors */
+    --color-tech-green: #10B981;
+    --color-tech-green-light: #ECFDF5;
+    --color-tech-red: #DC2626;
+    --color-tech-red-light: #FEF2F2;
+    
     --color-pastel-purple: #F3E8FF;
     --color-pastel-blue: #E0F2FE;
     --color-pastel-pink: #FCE7F3;
@@ -142,34 +148,32 @@ a {
     line-height: 1.6;
 }
 
-/* ===== Search Container ===== */
-.search-container {
-    background: #FFFFFF;
-    border: 3px solid var(--color-border);
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 6px 6px 0px var(--color-border);
+/* ===== Search Bar - Simple like Google ===== */
+.search-bar {
+    width: 100%;
+    margin-bottom: 1.5rem;
 }
 
 .platform-selector {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .platform-dropdown {
     position: relative;
     width: 100%;
+    max-width: 300px;
 }
 
 .platform-dropdown-btn {
     width: 100%;
-    padding: 0.8rem 1.2rem;
+    padding: 0.7rem 1rem;
     border: 2px solid var(--color-border);
     border-radius: 8px;
     background: #FFFFFF;
     color: var(--color-text);
     font-weight: 600;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-family: inherit;
     display: flex;
     justify-content: space-between;
@@ -201,13 +205,14 @@ a {
 }
 
 .platform-option {
-    padding: 0.8rem 1.2rem;
+    padding: 0.7rem 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
 }
 
 .platform-option:last-child {
@@ -227,26 +232,45 @@ a {
     width: 20px;
 }
 
+/* Simple search input + button */
 .input-box {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 0;
+    width: 100%;
+    border: 3px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #FFFFFF;
+    transition: all 0.2s ease;
+}
+
+.input-box:focus-within {
+    box-shadow: 4px 4px 0px var(--color-border);
 }
 
 .input-box input {
     flex: 1;
     padding: 1rem 1.2rem;
-    border: 3px solid var(--color-border);
-    border-radius: 12px;
+    border: none;
     font-size: 1rem;
     font-family: inherit;
     outline: none;
-    background: #FFFFFF;
-    transition: all 0.2s ease;
+    background: transparent;
+    color: var(--color-text);
 }
 
-.input-box input:focus {
-    box-shadow: 4px 4px 0px var(--color-border);
+.input-box input::placeholder {
+    color: var(--color-text-light);
+}
+
+.input-box .btn-primary {
+    border-radius: 0;
+    border-left: 3px solid var(--color-border);
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    padding: 1rem 1.5rem;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -272,12 +296,12 @@ a {
 }
 
 .btn-secondary {
-    padding: 0.8rem 1.5rem;
+    padding: 0.7rem 1.2rem;
     background-color: #FFFFFF;
     color: var(--color-text);
     border: 2px solid var(--color-border);
     border-radius: 8px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -294,11 +318,12 @@ a {
 
 .action-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
     flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
-/* ===== Hero Illustration ===== */
+/* ===== Hero Illustration - Bigger ===== */
 .hero-illustration {
     flex: 1;
     display: flex;
@@ -308,7 +333,7 @@ a {
 
 .hero-illustration svg {
     width: 100%;
-    max-width: 400px;
+    max-width: 550px;
     height: auto;
 }
 
@@ -329,9 +354,9 @@ a {
 }
 
 .status-message.error {
-    background-color: #FEE2E2;
-    border-color: #DC2626;
-    color: #DC2626;
+    background-color: var(--color-tech-red-light);
+    border-color: var(--color-tech-red);
+    color: var(--color-tech-red);
 }
 
 .status-message:not(.error) {
@@ -532,10 +557,10 @@ a {
     border-style: dashed;
 }
 
-/* ===== Algorithm Box ===== */
+/* ===== Algorithm Box - TECH CARD (Green/Red) ===== */
 .algorithm-box {
-    background: var(--color-pastel-blue);
-    border: 3px solid var(--color-border);
+    background: var(--color-tech-green-light);
+    border: 3px solid var(--color-tech-green);
     border-radius: 16px;
     padding: 2.5rem;
     margin-top: 2rem;
@@ -549,7 +574,7 @@ a {
 }
 
 .algorithm-illustration {
-    flex: 0 0 200px;
+    flex: 0 0 220px;
 }
 
 .algorithm-illustration svg {
@@ -559,7 +584,7 @@ a {
 
 .algorithm-box > .algorithm-content > p:first-child {
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--color-text);
 }
@@ -572,7 +597,7 @@ a {
 
 .algorithm-box li {
     padding: 1rem 0;
-    border-bottom: 2px solid var(--color-border);
+    border-bottom: 2px solid var(--color-tech-green);
     display: flex;
     align-items: flex-start;
     gap: 0.8rem;
@@ -583,9 +608,10 @@ a {
 }
 
 .algorithm-box li i {
-    color: var(--color-primary);
+    color: var(--color-tech-green);
     margin-top: 0.3rem;
     flex-shrink: 0;
+    font-size: 1.2rem;
 }
 
 .algorithm-box .note {
@@ -594,12 +620,13 @@ a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--color-primary);
+    color: var(--color-tech-red);
 }
 
 .algorithm-box a {
-    color: var(--color-primary);
+    color: var(--color-tech-red);
     text-decoration: underline;
+    font-weight: 700;
 }
 
 /* ===== Comparison Table ===== */
@@ -646,12 +673,12 @@ a {
 }
 
 .yes {
-    color: #10B981;
+    color: var(--color-tech-green);
     font-weight: 700;
 }
 
 .no {
-    color: #EF4444;
+    color: var(--color-tech-red);
     font-weight: 700;
 }
 
@@ -951,8 +978,8 @@ a {
         gap: 3rem;
     }
     
-    .input-box {
-        flex-direction: column;
+    .platform-dropdown {
+        max-width: 100%;
     }
     
     .action-buttons {
@@ -965,6 +992,7 @@ a {
     
     .algorithm-illustration {
         flex: 0 0 auto;
+        max-width: 200px;
     }
 }
 
@@ -987,10 +1015,6 @@ a {
     
     .hero-subtitle {
         font-size: 1.1rem;
-    }
-    
-    .search-container {
-        padding: 1.5rem;
     }
     
     .section {
