@@ -13,14 +13,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/mainIcon.png">
 </head>
 <body>
 
     <!-- Header -->
     <header class="site-header">
         <div class="logo">
-            <i class="fa-solid fa-music"></i> yoobify
+            <img src="assets/icons/mainLogo.png" alt="yoobify logo" width="40" height="40">
+            <span>yoobify</span>
         </div>
         <nav>
             <a href="#how-it-works">How it works</a>
@@ -169,8 +171,8 @@
                     <p>Drop links from Spotify or Deezer. You can paste multiple playlists to compare them and find the hidden connections between your favorite songs.</p>
                 </div>
                 <div class="half-card-illustration">
-                    <!-- 🖼️ استبدل هذا بـ: assets/illustrations/paste-playlist.svg -->
-                    <img src="assets/illustrations/paste-playlist.svg" 
+                    <!-- 🖼️ ضع صورتك هنا: assets/illustrations/paste-playlist.png -->
+                    <img src="assets/illustrations/paste-playlist.png" 
                          alt="Hand holding phone with playlist link" 
                          width="280" 
                          height="280"
@@ -185,8 +187,8 @@
                     <p>Our algorithm identifies songs that appear in multiple playlists and analyzes their shared traits like tempo, mood, and cultural background.</p>
                 </div>
                 <div class="half-card-illustration">
-                    <!-- 🖼️ استبدل هذا بـ: assets/illustrations/find-overlap.svg -->
-                    <img src="assets/illustrations/find-overlap.svg" 
+                    <!-- 🖼️ ضع صورتك هنا: assets/illustrations/find-overlap.png -->
+                    <img src="assets/illustrations/find-overlap.png" 
                          alt="Venn diagram showing playlist overlap" 
                          width="280" 
                          height="280"
@@ -201,8 +203,8 @@
                     <p>Based on common tracks, we suggest similar songs from other languages and cultures you might love. Expand your musical horizons effortlessly.</p>
                 </div>
                 <div class="half-card-illustration">
-                    <!-- 🖼️ استبدل هذا بـ: assets/illustrations/discover-music.svg -->
-                    <img src="assets/illustrations/discover-music.svg" 
+                    <!-- 🖼️ ضع صورتك هنا: assets/illustrations/discover-music.png -->
+                    <img src="assets/illustrations/discover-music.png" 
                          alt="Globe with music notes around it" 
                          width="280" 
                          height="280"
@@ -212,37 +214,23 @@
         </div>
     </section>
 
-    <!-- Supported Platforms -->
+    <!-- Supported Platforms - Official Icons -->
     <section id="platforms" class="section">
         <h2>Platforms we support</h2>
         <p class="section-subtitle">Currently integrated and ready to use.</p>
         <div class="platforms-grid">
             <div class="platform-card">
                 <div class="platform-logo">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="30" cy="30" r="25" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <path d="M 18 25 Q 30 22 42 25" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
-                        <path d="M 20 32 Q 30 30 40 32" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M 22 39 Q 30 37 38 39" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-                        <circle cx="30" cy="30" r="5" fill="#8B5CF6" opacity="0.3"/>
-                    </svg>
+                    <!-- Spotify Official Icon -->
+                    <i class="fa-brands fa-spotify" style="font-size: 3.5rem; color: #1DB954;"></i>
                 </div>
                 <h3>Spotify</h3>
                 <p>Full API integration</p>
             </div>
             <div class="platform-card">
                 <div class="platform-logo">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="10" y="10" width="12" height="12" fill="#1A1A1A" opacity="0.2"/>
-                        <rect x="24" y="10" width="12" height="12" fill="#1A1A1A" opacity="0.4"/>
-                        <rect x="38" y="10" width="12" height="12" fill="#1A1A1A" opacity="0.6"/>
-                        <rect x="10" y="24" width="12" height="12" fill="#1A1A1A" opacity="0.4"/>
-                        <rect x="24" y="24" width="12" height="12" fill="#1A1A1A" opacity="0.6"/>
-                        <rect x="38" y="24" width="12" height="12" fill="#8B5CF6" opacity="0.8"/>
-                        <rect x="10" y="38" width="12" height="12" fill="#1A1A1A" opacity="0.6"/>
-                        <rect x="24" y="38" width="12" height="12" fill="#8B5CF6" opacity="0.8"/>
-                        <rect x="38" y="38" width="12" height="12" fill="#8B5CF6"/>
-                    </svg>
+                    <!-- Deezer Official Icon -->
+                    <i class="fa-brands fa-deezer" style="font-size: 3.5rem; color: #FF5A3B;"></i>
                 </div>
                 <h3>Deezer</h3>
                 <p>Full API integration</p>
@@ -255,46 +243,32 @@
             <div class="platforms-grid future-grid">
                 <div class="platform-card future">
                     <div class="platform-logo">
-                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="30" cy="30" r="22" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                            <path d="M 30 15 L 30 30 L 42 30" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
-                            <circle cx="30" cy="30" r="4" fill="#1A1A1A"/>
-                        </svg>
+                        <!-- Apple Music Official Icon -->
+                        <i class="fa-brands fa-apple" style="font-size: 3.5rem; color: #FA243C;"></i>
                     </div>
                     <h3>Apple Music</h3>
                     <p>Planned</p>
                 </div>
                 <div class="platform-card future">
                     <div class="platform-logo">
-                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="15" y="12" width="30" height="36" rx="3" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                            <polygon points="25,22 25,38 38,30" fill="#1A1A1A" opacity="0.3"/>
-                            <circle cx="30" cy="42" r="2" fill="#1A1A1A"/>
-                        </svg>
+                        <!-- YouTube Music Official Icon -->
+                        <i class="fa-brands fa-youtube" style="font-size: 3.5rem; color: #FF0000;"></i>
                     </div>
                     <h3>YouTube Music</h3>
                     <p>Planned</p>
                 </div>
                 <div class="platform-card future">
                     <div class="platform-logo">
-                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="30" cy="20" r="10" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                            <path d="M 15 45 Q 15 30 30 30 Q 45 30 45 45" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                            <path d="M 20 45 L 40 45" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
-                        </svg>
+                        <!-- SoundCloud Official Icon -->
+                        <i class="fa-brands fa-soundcloud" style="font-size: 3.5rem; color: #FF5500;"></i>
                     </div>
                     <h3>SoundCloud</h3>
                     <p>Planned</p>
                 </div>
                 <div class="platform-card future">
                     <div class="platform-logo">
-                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M 15 35 Q 20 20 30 25 Q 40 30 45 20" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
-                            <circle cx="15" cy="35" r="3" fill="#8B5CF6"/>
-                            <circle cx="30" cy="25" r="3" fill="#06B6D4"/>
-                            <circle cx="45" cy="20" r="3" fill="#1A1A1A"/>
-                            <line x1="10" y1="45" x2="50" y2="45" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
+                        <!-- Anghami Icon (using music icon as placeholder) -->
+                        <i class="fa-solid fa-music" style="font-size: 3.5rem; color: #7A38F7;"></i>
                     </div>
                     <h3>Anghami</h3>
                     <p>Planned</p>
@@ -486,74 +460,42 @@
         <div class="needs-grid">
             <div class="need-card">
                 <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="30" cy="25" r="12" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <path d="M 15 50 Q 15 38 30 38 Q 45 38 45 50" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <text x="30" y="30" text-anchor="middle" font-size="14" fill="#8B5CF6" font-weight="bold">A</text>
-                        <text x="45" y="20" text-anchor="middle" font-size="10" fill="#06B6D4" font-weight="bold">ع</text>
-                    </svg>
+                    <i class="fa-solid fa-language" style="font-size: 3.5rem; color: #8B5CF6;"></i>
                 </div>
                 <h3>Translators</h3>
                 <p>Help us add more languages. Currently we support English and Arabic, but we need French, Spanish, Turkish, and more.</p>
             </div>
             <div class="need-card">
                 <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="15" y="10" width="30" height="40" rx="3" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <path d="M 22 22 L 28 28 L 38 18" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <line x1="22" y1="35" x2="38" y2="35" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="22" y1="42" x2="32" y2="42" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+                    <i class="fa-solid fa-flask-vial" style="font-size: 3.5rem; color: #06B6D4;"></i>
                 </div>
                 <h3>Algorithm Improvers</h3>
                 <p>Our matching algorithm works, but it can be smarter. If you know music theory or machine learning, we need you.</p>
             </div>
             <div class="need-card">
                 <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="10" y="15" width="40" height="30" rx="2" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <circle cx="22" cy="28" r="5" fill="none" stroke="#8B5CF6" stroke-width="2"/>
-                        <rect x="32" y="23" width="12" height="3" fill="#1A1A1A"/>
-                        <rect x="32" y="29" width="8" height="3" fill="#1A1A1A" opacity="0.5"/>
-                        <path d="M 15 40 L 25 40 L 28 35 L 32 42 L 35 38 L 45 38" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <i class="fa-solid fa-pen-ruler" style="font-size: 3.5rem; color: #EC4899;"></i>
                 </div>
                 <h3>Designers</h3>
                 <p>Our design is simple and clean, but it could be more beautiful. If you have an eye for UI/UX, please help us.</p>
             </div>
             <div class="need-card">
                 <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="20" y="15" width="20" height="30" rx="2" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <circle cx="30" cy="22" r="3" fill="#1A1A1A"/>
-                        <line x1="25" y1="30" x2="35" y2="30" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="25" y1="36" x2="35" y2="36" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="25" y1="42" x2="30" y2="42" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M 45 20 L 50 20 L 50 25" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
-                        <line x1="45" y1="25" x2="50" y2="20" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
-                    </svg>
+                    <i class="fa-solid fa-plug" style="font-size: 3.5rem; color: #10B981;"></i>
                 </div>
                 <h3>API Integrators</h3>
                 <p>We want to support more platforms. If you've worked with Apple Music, YouTube Music, or SoundCloud APIs, we'd love your help.</p>
             </div>
             <div class="need-card">
                 <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="30" cy="30" r="20" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <path d="M 22 22 L 38 38 M 38 22 L 22 38" stroke="#DC2626" stroke-width="3" stroke-linecap="round"/>
-                        <circle cx="30" cy="30" r="5" fill="#FBCFE8" stroke="#1A1A1A" stroke-width="2"/>
-                    </svg>
+                    <i class="fa-solid fa-bug" style="font-size: 3.5rem; color: #DC2626;"></i>
                 </div>
                 <h3>Bug Hunters</h3>
                 <p>Test the app, find bugs, and report them. Every bug you find makes yoobify better for everyone.</p>
             </div>
             <div class="need-card">
                 <div class="card-icon">
-                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 15 30 Q 15 15 30 15 Q 45 15 45 30 Q 45 45 30 45 Q 15 45 15 30" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
-                        <path d="M 30 15 L 30 8 M 22 17 L 18 11 M 38 17 L 42 11" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
-                        <path d="M 22 28 L 28 34 L 38 24" fill="none" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <i class="fa-solid fa-bullhorn" style="font-size: 3.5rem; color: #F59E0B;"></i>
                 </div>
                 <h3>Community Builders</h3>
                 <p>Share yoobify with your friends, write about it, or help us grow our community on Reddit and GitHub.</p>
@@ -589,7 +531,7 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3><i class="fa-solid fa-music"></i> yoobify</h3>
+                <h3><img src="assets/icons/mainLogo.png" alt="yoobify" width="24" height="24" style="vertical-align: middle; margin-right: 0.5rem;"> yoobify</h3>
                 <p>Discover music across cultures, languages, and platforms.</p>
             </div>
             <div class="footer-section">
