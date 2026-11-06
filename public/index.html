@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yoobify | Discover Music Connections</title>
+    <meta name="description" content="An open-source music discovery engine that finds common tracks and similar songs across different platforms, languages, and cultures.">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="logo">
+            <i class="fa-solid fa-music"></i> yoobify
+        </div>
+        <nav>
+            <a href="#how-it-works">How it works</a>
+            <a href="#platforms">Platforms</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contribute">Contribute</a>
+            <a href="https://github.com/nidalbenyakhelf/yoobify" target="_blank">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1>Finding the hidden connections in the music we love.</h1>
+            <p>Paste your playlists. Find the overlap. Discover new cultures.</p>
+            
+            <div class="input-box">
+                <input type="text" placeholder="Paste Spotify or Deezer playlist link here..." aria-label="Playlist URL">
+                <button class="btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i> Find Connections
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-illustration">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="150" cy="150" r="120" fill="none" stroke="#1A1A1A" stroke-width="4"/>
+                <circle cx="150" cy="150" r="90" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-dasharray="6 6"/>
+                <circle cx="150" cy="150" r="60" fill="none" stroke="#FF4422" stroke-width="4"/>
+                <circle cx="150" cy="150" r="25" fill="#FF4422"/>
+                <path d="M 80 80 L 110 110 M 220 80 L 190 110 M 80 220 L 110 190 M 220 220 L 190 190" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+                <path d="M 150 30 L 150 60 M 150 240 L 150 270 M 30 150 L 60 150 M 240 150 L 270 150" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </main>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section">
+        <h2>How it works</h2>
+        <p class="section-subtitle">Three simple steps to discover music across borders.</p>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-link"></i></div>
+                <h3>1. Paste Your Playlists</h3>
+                <p>Drop links from Spotify or Deezer. You can paste multiple playlists to compare them.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <h3>2. We Find the Overlap</h3>
+                <p>Our algorithm identifies songs that appear in multiple playlists and analyzes their shared traits.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                <h3>3. Discover New Music</h3>
+                <p>Based on common tracks, we suggest similar songs from other languages and cultures you might love.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Platforms -->
+    <section id="platforms" class="section">
+        <h2>Platforms we support</h2>
+        <p class="section-subtitle">Currently integrated and ready to use.</p>
+        <div class="platforms-grid">
+            <div class="platform-card">
+                <div class="platform-logo"><i class="fa-brands fa-spotify"></i></div>
+                <h3>Spotify</h3>
+                <p>Full API integration</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-logo"><i class="fa-brands fa-deezer"></i></div>
+                <h3>Deezer</h3>
+                <p>Full API integration</p>
+            </div>
+        </div>
+
+        <div class="future-platforms">
+            <h3><i class="fa-solid fa-hourglass-half"></i> We hope to support these in the future</h3>
+            <p>These are not available yet. We're working on them, and we'd love your help to make it happen.</p>
+            <div class="platforms-grid future-grid">
+                <div class="platform-card future">
+                    <div class="platform-logo"><i class="fa-brands fa-apple"></i></div>
+                    <h3>Apple Music</h3>
+                    <p>Planned</p>
+                </div>
+                <div class="platform-card future">
+                    <div class="platform-logo"><i class="fa-brands fa-youtube"></i></div>
+                    <h3>YouTube Music</h3>
+                    <p>Planned</p>
+                </div>
+                <div class="platform-card future">
+                    <div class="platform-logo"><i class="fa-brands fa-soundcloud"></i></div>
+                    <h3>SoundCloud</h3>
+                    <p>Planned</p>
+                </div>
+                <div class="platform-card future">
+                    <div class="platform-logo"><i class="fa-solid fa-music"></i></div>
+                    <h3>Anghami</h3>
+                    <p>Planned</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Algorithm -->
+    <section id="algorithm" class="section">
+        <h2>Our algorithm (in simple words)</h2>
+        <div class="algorithm-box">
+            <p>We don't use magic. We use math and music theory.</p>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <strong>Track Matching:</strong> We compare song titles, artists, and duration to find exact matches across platforms.
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <strong>Audio Features:</strong> We analyze tempo (BPM), key, energy, and mood to find similar songs.
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <strong>Cultural Bridges:</strong> If you like Arabic pop with 120 BPM, we'll find Turkish, Spanish, or French songs with similar vibes.
+                </li>
+            </ul>
+            <p class="note"><i class="fa-solid fa-flask"></i> Want to improve our algorithm? Check the <a href="#contribute">contribute section</a> below.</p>
+        </div>
+    </section>
+
+    <!-- Comparison with Alternatives -->
+    <section id="comparison" class="section">
+        <h2>How we compare to alternatives</h2>
+        <p class="section-subtitle">An honest look at where we stand.</p>
+        <div class="comparison-table">
+            <div class="comparison-row header">
+                <div>Feature</div>
+                <div>yoobify</div>
+                <div>Other tools</div>
+            </div>
+            <div class="comparison-row">
+                <div>Cross-platform matching</div>
+                <div class="yes"><i class="fa-solid fa-check"></i> Yes</div>
+                <div class="no"><i class="fa-solid fa-xmark"></i> Limited</div>
+            </div>
+            <div class="comparison-row">
+                <div>Multi-language discovery</div>
+                <div class="yes"><i class="fa-solid fa-check"></i> Yes</div>
+                <div class="no"><i class="fa-solid fa-xmark"></i> No</div>
+            </div>
+            <div class="comparison-row">
+                <div>Open source</div>
+                <div class="yes"><i class="fa-solid fa-check"></i> 100%</div>
+                <div class="no"><i class="fa-solid fa-xmark"></i> Closed</div>
+            </div>
+            <div class="comparison-row">
+                <div>Free to use</div>
+                <div class="yes"><i class="fa-solid fa-check"></i> Always</div>
+                <div class="maybe"><i class="fa-solid fa-minus"></i> Sometimes</div>
+            </div>
+            <div class="comparison-row">
+                <div>Community-driven</div>
+                <div class="yes"><i class="fa-solid fa-check"></i> Yes</div>
+                <div class="no"><i class="fa-solid fa-xmark"></i> No</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <h2>Frequently asked questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> Is yoobify free?</h3>
+                <p>Yes, completely free and open source. No ads, no premium plans, no hidden costs.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> Do I need to create an account?</h3>
+                <p>No. Just paste your playlist links and go. We don't store your personal data.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> Which platforms are supported right now?</h3>
+                <p>Currently only Spotify and Deezer. We hope to add Apple Music, YouTube Music, SoundCloud, and Anghami in the future, but they are not ready yet.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> How accurate is the matching?</h3>
+                <p>We're constantly improving. Right now it's about 85% accurate, and we need your help to make it better.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> Can I contribute to the project?</h3>
+                <p>Absolutely! We need developers, designers, translators, and music lovers. See the section below.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribute Section -->
+    <section id="contribute" class="section contribute-section">
+        <h2>We need your help</h2>
+        <div class="honest-note">
+            <p><i class="fa-solid fa-hand-wave"></i> Let me be honest with you:</p>
+            <p>I'm Nidal, a mid-level developer. I'm not a senior engineer, and I don't have a big team behind me. This project is my passion, but I can't do it alone.</p>
+            <p><strong>That's why yoobify is open source.</strong> I want you to join me, improve it, and make it better than I ever could on my own.</p>
+        </div>
+        
+        <div class="needs-grid">
+            <div class="need-card">
+                <div class="card-icon"><i class="fa-solid fa-language"></i></div>
+                <h3>Translators</h3>
+                <p>Help us add more languages. Currently we support English and Arabic, but we need French, Spanish, Turkish, and more.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon"><i class="fa-solid fa-flask-vial"></i></div>
+                <h3>Algorithm Improvers</h3>
+                <p>Our matching algorithm works, but it can be smarter. If you know music theory or machine learning, we need you.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                <h3>Designers</h3>
+                <p>Our design is simple and clean, but it could be more beautiful. If you have an eye for UI/UX, please help us.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon"><i class="fa-solid fa-plug"></i></div>
+                <h3>API Integrators</h3>
+                <p>We want to support more platforms. If you've worked with Apple Music, YouTube Music, or SoundCloud APIs, we'd love your help.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon"><i class="fa-solid fa-bug"></i></div>
+                <h3>Bug Hunters</h3>
+                <p>Test the app, find bugs, and report them. Every bug you find makes yoobify better for everyone.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                <h3>Community Builders</h3>
+                <p>Share yoobify with your friends, write about it, or help us grow our community on Reddit and GitHub.</p>
+            </div>
+        </div>
+
+        <!-- Contributors List (fetched from GitHub) -->
+        <div class="contributors-section">
+            <h3><i class="fa-solid fa-users"></i> Our Contributors</h3>
+            <p>Every person who helps build yoobify is recognized here. This list is pulled directly from GitHub.</p>
+            <div id="contributors-list" class="contributors-grid">
+                <div class="contributor-placeholder">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <p>Loading contributors...</p>
+                </div>
+            </div>
+            <p class="contributors-note">
+                <i class="fa-solid fa-heart"></i> Be the next contributor! Check our 
+                <a href="https://github.com/yourusername/yoobify/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guide</a>.
+            </p>
+        </div>
+
+        <div class="cta-box">
+            <h3>Ready to join?</h3>
+            <p>Check our <a href="https://github.com/yourusername/yoobify/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guide</a> or open an issue on GitHub.</p>
+            <a href="https://github.com/yourusername/yoobify" target="_blank" class="btn-primary">
+                <i class="fa-brands fa-github"></i> Go to GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fa-solid fa-music"></i> yoobify</h3>
+                <p>Discover music across cultures, languages, and platforms.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#platforms">Platforms</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contribute">Contribute</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="https://github.com/yourusername/yoobify/blob/main/LICENSE" target="_blank">MIT License</a></li>
+                    <li><a href="https://github.com/yourusername/yoobify/blob/main/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a></li>
+                    <li><a href="https://github.com/yourusername/yoobify/blob/main/SECURITY.md" target="_blank">Security Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://github.com/yourusername/yoobify" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                    <li><a href="https://reddit.com/r/yoobify" target="_blank"><i class="fa-brands fa-reddit"></i> Reddit</a></li>
+                    <li><a href="mailto:your@email.com"><i class="fa-solid fa-envelope"></i> Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Built with patience, curiosity, and a lot of coffee by <strong>Ben Khelaf Nidal</strong> <i class="fa-solid fa-mug-hot"></i></p>
+            <p>&copy; 2026 yoobify. Open source under MIT License.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
