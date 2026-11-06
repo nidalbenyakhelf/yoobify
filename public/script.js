@@ -1,6 +1,7 @@
 /**
  * yoobify - Main Application Logic
  * Uses Deezer JSONP API to bypass CORS restrictions
+ * Version: 0.2.0
  */
 
 (function() {
@@ -32,11 +33,17 @@
 
     // ===== Utility Functions =====
     const Utils = {
+        /**
+         * Extracts playlist ID from a Deezer URL
+         */
         extractPlaylistId(url) {
             const match = url.match(CONFIG.PLAYLIST_ID_REGEX);
             return match ? match[1] : null;
         },
 
+        /**
+         * Sanitizes HTML to prevent XSS attacks
+         */
         sanitizeHTML(str) {
             if (!str) return '';
             const temp = document.createElement('div');
@@ -44,12 +51,16 @@
             return temp.innerHTML;
         },
 
+        /**
+         * Formats number with commas (e.g., 1000 -> 1,000)
+         */
         formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
 
         /**
          * JSONP helper - bypasses CORS by loading script tags
+         * Deezer officially supports JSONP via output=jsonp parameter
          */
         jsonp(url, callbackName = 'callback') {
             return new Promise((resolve, reject) => {
@@ -57,28 +68,30 @@
                 const separator = url.includes('?') ? '&' : '?';
                 const fullUrl = `${url}${separator}output=jsonp&${callbackName}=${uniqueCallback}`;
 
-                // Create global callback
+                // Create global callback function
                 window[uniqueCallback] = function(data) {
                     resolve(data);
                     cleanup();
                 };
 
-                // Create script tag
+                // Create and append script tag
                 const script = document.createElement('script');
                 script.src = fullUrl;
                 script.async = true;
 
-                // Handle errors
+                // Handle timeout
                 const timeout = setTimeout(() => {
                     reject(new Error('Request timed out'));
                     cleanup();
                 }, 10000);
 
+                // Handle script load errors
                 script.onerror = function() {
                     reject(new Error('Failed to load script'));
                     cleanup();
                 };
 
+                // Cleanup function
                 function cleanup() {
                     clearTimeout(timeout);
                     delete window[uniqueCallback];
@@ -96,6 +109,7 @@
     const API = {
         /**
          * Fetches playlist data from Deezer API using JSONP
+         * This bypasses CORS restrictions completely
          */
         async getDeezerPlaylist(playlistId) {
             const url = `${CONFIG.DEEZER_API_BASE}/playlist/${playlistId}`;
@@ -155,15 +169,18 @@
         },
 
         displayResults(playlist) {
-            DOM.hideAllStates();
+            UI.hideAllStates();
             
+            // Update header info
             DOM.playlistTitle.textContent = Utils.sanitizeHTML(playlist.title);
             const trackCount = Utils.formatNumber(playlist.nb_tracks);
             const creator = playlist.creator ? Utils.sanitizeHTML(playlist.creator.name) : 'Unknown';
             DOM.playlistMeta.textContent = `${trackCount} tracks • By ${creator}`;
             
+            // Clear previous tracks
             DOM.trackList.innerHTML = '';
             
+            // Use DocumentFragment for better performance
             const fragment = document.createDocumentFragment();
             
             playlist.tracks.data.forEach(track => {
@@ -199,11 +216,12 @@
             DOM.trackList.appendChild(fragment);
             DOM.resultsSection.style.display = 'block';
             
+            // Smooth scroll to results
             DOM.resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         },
 
         resetView() {
-            DOM.hideAllStates();
+            UI.hideAllStates();
             DOM.resultsSection.style.display = 'none';
             DOM.input.value = '';
             DOM.input.focus();
@@ -317,6 +335,7 @@
                             block: 'start'
                         });
                         
+                        // Close mobile menu if open
                         if (window.innerWidth <= 768 && DOM.nav) {
                             DOM.nav.style.display = 'none';
                         }
@@ -328,22 +347,27 @@
 
     // ===== Initialization =====
     function init() {
+        // Attach form submit handler
         if (DOM.form) {
             DOM.form.addEventListener('submit', Handlers.handleFormSubmit);
         }
         
+        // Attach reset button handler
         if (DOM.resetBtn) {
             DOM.resetBtn.addEventListener('click', Handlers.handleReset);
         }
         
+        // Attach mobile menu and smooth scroll handlers
         Handlers.handleMobileMenu();
         Handlers.handleSmoothScroll();
         
+        // Load contributors
         UI.renderContributors();
         
         console.log('yoobify initialized successfully.');
     }
 
+    // Run initialization when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
