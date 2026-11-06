@@ -42,7 +42,7 @@
             <h1>Discover the hidden connections in the music we love.</h1>
             <p class="hero-subtitle">Find common tracks between playlists and explore similar music across different cultures and languages.</p>
             
-            <!-- Simple Search Bar (No Platform Dropdown) -->
+            <!-- Simple Search Bar -->
             <div class="search-bar">
                 <form id="playlist-form" class="input-box">
                     <input 
@@ -81,6 +81,7 @@
         </div>
 
         <div class="hero-illustration">
+            <!-- Hero SVG Illustration - Vinyl Record Style -->
             <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <circle cx="250" cy="250" r="200" fill="none" stroke="#1A1A1A" stroke-width="3" opacity="0.15"/>
                 <circle cx="250" cy="250" r="170" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="8 8" opacity="0.25"/>
@@ -161,55 +162,51 @@
         <p class="section-subtitle">Three simple steps to discover music across borders.</p>
         
         <div class="half-cards-container">
+            <!-- Card 1: Text Left, Image Right -->
             <div class="half-card">
                 <div class="half-card-content">
                     <h3>1. Paste Your Playlists</h3>
                     <p>Drop links from Spotify or Deezer. You can paste multiple playlists to compare them and find the hidden connections between your favorite songs.</p>
                 </div>
                 <div class="half-card-illustration">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="30" y="40" width="140" height="120" rx="8" fill="none" stroke="#1A1A1A" stroke-width="3"/>
-                        <line x1="50" y1="70" x2="150" y2="70" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="50" y1="90" x2="130" y2="90" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="50" y1="110" x2="110" y2="110" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="50" y1="130" x2="90" y2="130" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="160" cy="30" r="20" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="3"/>
-                        <path d="M 155 30 L 158 33 L 165 25" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <!-- 🖼️ استبدل هذا بـ: assets/illustrations/paste-playlist.svg -->
+                    <img src="assets/illustrations/paste-playlist.svg" 
+                         alt="Hand holding phone with playlist link" 
+                         width="280" 
+                         height="280"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<svg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'><rect x=\'30\' y=\'40\' width=\'140\' height=\'120\' rx=\'8\' fill=\'none\' stroke=\'#1A1A1A\' stroke-width=\'3\'/><line x1=\'50\' y1=\'70\' x2=\'150\' y2=\'70\' stroke=\'#8B5CF6\' stroke-width=\'3\' stroke-linecap=\'round\'/><line x1=\'50\' y1=\'90\' x2=\'130\' y2=\'90\' stroke=\'#1A1A1A\' stroke-width=\'2\' stroke-linecap=\'round\'/><line x1=\'50\' y1=\'110\' x2=\'110\' y2=\'110\' stroke=\'#1A1A1A\' stroke-width=\'2\' stroke-linecap=\'round\'/><circle cx=\'160\' cy=\'30\' r=\'20\' fill=\'#8B5CF6\' stroke=\'#1A1A1A\' stroke-width=\'3\'/></svg>';">
                 </div>
             </div>
             
+            <!-- Card 2: Image Left, Text Right (auto-reversed by CSS) -->
             <div class="half-card">
                 <div class="half-card-content">
                     <h3>2. We Find the Overlap</h3>
                     <p>Our algorithm identifies songs that appear in multiple playlists and analyzes their shared traits like tempo, mood, and cultural background.</p>
                 </div>
                 <div class="half-card-illustration">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="80" cy="100" r="50" fill="none" stroke="#1A1A1A" stroke-width="3"/>
-                        <circle cx="120" cy="100" r="50" fill="none" stroke="#06B6D4" stroke-width="3"/>
-                        <circle cx="100" cy="100" r="20" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2"/>
-                        <path d="M 60 60 L 140 60" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4 4"/>
-                        <path d="M 60 140 L 140 140" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4 4"/>
-                    </svg>
+                    <!-- 🖼️ استبدل هذا بـ: assets/illustrations/find-overlap.svg -->
+                    <img src="assets/illustrations/find-overlap.svg" 
+                         alt="Venn diagram showing playlist overlap" 
+                         width="280" 
+                         height="280"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<svg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'><circle cx=\'80\' cy=\'100\' r=\'50\' fill=\'none\' stroke=\'#1A1A1A\' stroke-width=\'3\'/><circle cx=\'120\' cy=\'100\' r=\'50\' fill=\'none\' stroke=\'#06B6D4\' stroke-width=\'3\'/><circle cx=\'100\' cy=\'100\' r=\'20\' fill=\'#8B5CF6\' stroke=\'#1A1A1A\' stroke-width=\'2\'/></svg>';">
                 </div>
             </div>
             
+            <!-- Card 3: Text Left, Image Right -->
             <div class="half-card">
                 <div class="half-card-content">
                     <h3>3. Discover New Music</h3>
                     <p>Based on common tracks, we suggest similar songs from other languages and cultures you might love. Expand your musical horizons effortlessly.</p>
                 </div>
                 <div class="half-card-illustration">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="100" cy="100" r="70" fill="none" stroke="#1A1A1A" stroke-width="3"/>
-                        <ellipse cx="100" cy="100" rx="30" ry="70" fill="none" stroke="#1A1A1A" stroke-width="2"/>
-                        <line x1="30" y1="100" x2="170" y2="100" stroke="#1A1A1A" stroke-width="2"/>
-                        <line x1="40" y1="60" x2="160" y2="60" stroke="#1A1A1A" stroke-width="1.5"/>
-                        <line x1="40" y1="140" x2="160" y2="140" stroke="#1A1A1A" stroke-width="1.5"/>
-                        <circle cx="100" cy="100" r="15" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2"/>
-                        <path d="M 150 40 L 165 40 L 165 55" fill="none" stroke="#06B6D4" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
+                    <!-- 🖼️ استبدل هذا بـ: assets/illustrations/discover-music.svg -->
+                    <img src="assets/illustrations/discover-music.svg" 
+                         alt="Globe with music notes around it" 
+                         width="280" 
+                         height="280"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<svg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'><circle cx=\'100\' cy=\'100\' r=\'70\' fill=\'none\' stroke=\'#1A1A1A\' stroke-width=\'3\'/><ellipse cx=\'100\' cy=\'100\' rx=\'30\' ry=\'70\' fill=\'none\' stroke=\'#1A1A1A\' stroke-width=\'2\'/><line x1=\'30\' y1=\'100\' x2=\'170\' y2=\'100\' stroke=\'#1A1A1A\' stroke-width=\'2\'/><circle cx=\'100\' cy=\'100\' r=\'15\' fill=\'#8B5CF6\' stroke=\'#1A1A1A\' stroke-width=\'2\'/></svg>';">
                 </div>
             </div>
         </div>
