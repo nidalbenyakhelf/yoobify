@@ -25,4 +25,4 @@ I’m building this to learn, to solve a real problem, and to connect with other
 This project is free and open for everyone to use, learn from, and build upon under the [MIT License](LICENSE).
 
 ---
-*Built with patience, curiosity, and a lot of coffee by Nidal Ben yakhelf.* ☕
+*Built by Nidal Ben yakhelf.* ☕
