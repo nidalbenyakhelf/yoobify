@@ -1,6 +1,6 @@
 /**
  * yoobify - Main Application Logic
- * Handles Deezer API integration, UI updates, and user interactions.
+ * Uses Deezer JSONP API to bypass CORS restrictions
  */
 
 (function() {
@@ -10,12 +10,6 @@
     const CONFIG = {
         GITHUB_REPO: 'nidalbenyakhelf/yoobify',
         DEEZER_API_BASE: 'https://api.deezer.com',
-        // Multiple CORS proxies as fallback
-        CORS_PROXIES: [
-            'https://api.allorigins.win/raw?url=',
-            'https://corsproxy.io/?',
-            'https://cors-anywhere.herokuapp.com/'
-        ],
         PLAYLIST_ID_REGEX: /playlist\/(\d+)/i
     };
 
@@ -52,36 +46,77 @@
 
         formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+
+        /**
+         * JSONP helper - bypasses CORS by loading script tags
+         */
+        jsonp(url, callbackName = 'callback') {
+            return new Promise((resolve, reject) => {
+                const uniqueCallback = 'yoobify_jsonp_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+                const separator = url.includes('?') ? '&' : '?';
+                const fullUrl = `${url}${separator}output=jsonp&${callbackName}=${uniqueCallback}`;
+
+                // Create global callback
+                window[uniqueCallback] = function(data) {
+                    resolve(data);
+                    cleanup();
+                };
+
+                // Create script tag
+                const script = document.createElement('script');
+                script.src = fullUrl;
+                script.async = true;
+
+                // Handle errors
+                const timeout = setTimeout(() => {
+                    reject(new Error('Request timed out'));
+                    cleanup();
+                }, 10000);
+
+                script.onerror = function() {
+                    reject(new Error('Failed to load script'));
+                    cleanup();
+                };
+
+                function cleanup() {
+                    clearTimeout(timeout);
+                    delete window[uniqueCallback];
+                    if (script.parentNode) {
+                        script.parentNode.removeChild(script);
+                    }
+                }
+
+                document.head.appendChild(script);
+            });
         }
     };
 
     // ===== API Services =====
     const API = {
         /**
-         * Fetches playlist data from Deezer API via CORS proxy with fallback
+         * Fetches playlist data from Deezer API using JSONP
          */
         async getDeezerPlaylist(playlistId) {
-            const directUrl = `${CONFIG.DEEZER_API_BASE}/playlist/${playlistId}`;
+            const url = `${CONFIG.DEEZER_API_BASE}/playlist/${playlistId}`;
             
-            // Try each proxy until one works
-            for (const proxy of CONFIG.CORS_PROXIES) {
-                try {
-                    const proxyUrl = `${proxy}${encodeURIComponent(directUrl)}`;
-                    const response = await fetch(proxyUrl);
-                    
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data && data.tracks) {
-                            return data;
-                        }
-                    }
-                } catch (error) {
-                    console.warn(`Proxy ${proxy} failed, trying next...`);
-                    continue;
+            try {
+                const data = await Utils.jsonp(url);
+                
+                if (!data || !data.tracks) {
+                    throw new Error('Invalid response from Deezer API');
                 }
+                
+                return data;
+            } catch (error) {
+                if (error.message.includes('timed out')) {
+                    throw new Error('Request timed out. Please check your connection and try again.');
+                }
+                if (error.message.includes('Failed to load')) {
+                    throw new Error('Failed to connect to Deezer. Please try again later.');
+                }
+                throw error;
             }
-            
-            throw new Error('All CORS proxies failed. Please try again later.');
         },
 
         /**
