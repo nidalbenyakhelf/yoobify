@@ -15,7 +15,7 @@ yoobify is my attempt to break those walls. It’s an open-source tool designed 
 - **Cultural Bridges**: Discover songs in other languages that share the same mood, tempo, or soul as your favorite tracks.
 - **A Human-Friendly Design**: No clutter, no confusing algorithms hiding in the dark. Just a clean, simple, and linear interface that respects your time and attention.
 
-### 🚧 Where we are right now:
+###  Where we are right now:
 I believe in building things step by step, the right way. Right now, this is the very early foundation of the project. I’m setting up a clean, professional structure before diving into the complex parts (like API integrations and music analysis). 
 
 ###  Want to join the journey?
