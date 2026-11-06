@@ -10,7 +10,8 @@
     const CONFIG = {
         GITHUB_REPO: 'nidalbenyakhelf/yoobify',
         DEEZER_API_BASE: 'https://api.deezer.com',
-        // Regex to extract playlist ID from various Deezer URL formats
+        // CORS Proxy to bypass browser restrictions
+        CORS_PROXY: 'https://corsproxy.io/?',
         PLAYLIST_ID_REGEX: /playlist\/(\d+)/i
     };
 
@@ -33,30 +34,18 @@
 
     // ===== Utility Functions =====
     const Utils = {
-        /**
-         * Extracts playlist ID from a Deezer URL
-         * @param {string} url - The playlist URL
-         * @returns {string|null} - The playlist ID or null if invalid
-         */
         extractPlaylistId(url) {
             const match = url.match(CONFIG.PLAYLIST_ID_REGEX);
             return match ? match[1] : null;
         },
 
-        /**
-         * Sanitizes HTML to prevent XSS attacks
-         * @param {string} str - The string to sanitize
-         * @returns {string} - Sanitized string
-         */
         sanitizeHTML(str) {
+            if (!str) return '';
             const temp = document.createElement('div');
             temp.textContent = str;
             return temp.innerHTML;
         },
 
-        /**
-         * Formats number with commas (e.g., 1000 -> 1,000)
-         */
         formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
@@ -65,18 +54,21 @@
     // ===== API Services =====
     const API = {
         /**
-         * Fetches playlist data from Deezer API
-         * @param {string} playlistId - The Deezer playlist ID
-         * @returns {Promise<Object>} - Playlist data
+         * Fetches playlist data from Deezer API via CORS proxy
          */
         async getDeezerPlaylist(playlistId) {
-            const url = `${CONFIG.DEEZER_API_BASE}/playlist/${playlistId}`;
+            const directUrl = `${CONFIG.DEEZER_API_BASE}/playlist/${playlistId}`;
+            // Use CORS proxy to bypass browser restrictions
+            const proxyUrl = `${CONFIG.CORS_PROXY}${encodeURIComponent(directUrl)}`;
             
-            const response = await fetch(url);
+            const response = await fetch(proxyUrl);
             
             if (!response.ok) {
                 if (response.status === 404) {
                     throw new Error('Playlist not found. Please check the URL and try again.');
+                }
+                if (response.status === 429) {
+                    throw new Error('Too many requests. Please wait a moment and try again.');
                 }
                 throw new Error('Failed to fetch playlist. Please try again later.');
             }
@@ -86,7 +78,6 @@
 
         /**
          * Fetches contributors from GitHub API
-         * @returns {Promise<Array>} - Array of contributors
          */
         async getContributors() {
             const url = `https://api.github.com/repos/${CONFIG.GITHUB_REPO}/contributors?per_page=20`;
@@ -123,30 +114,31 @@
         displayResults(playlist) {
             DOM.hideAllStates();
             
-            // Update header info
             DOM.playlistTitle.textContent = Utils.sanitizeHTML(playlist.title);
             const trackCount = Utils.formatNumber(playlist.nb_tracks);
             const creator = playlist.creator ? Utils.sanitizeHTML(playlist.creator.name) : 'Unknown';
             DOM.playlistMeta.textContent = `${trackCount} tracks • By ${creator}`;
             
-            // Clear previous tracks
             DOM.trackList.innerHTML = '';
             
-            // Use DocumentFragment for better performance
             const fragment = document.createDocumentFragment();
             
             playlist.tracks.data.forEach(track => {
                 const li = document.createElement('li');
                 li.className = 'track-item';
                 
+                const coverUrl = track.album && track.album.cover_medium 
+                    ? Utils.sanitizeHTML(track.album.cover_medium) 
+                    : '';
+                
                 li.innerHTML = `
-                    <img src="${Utils.sanitizeHTML(track.album.cover_medium)}" 
+                    ${coverUrl ? `<img src="${coverUrl}" 
                          alt="${Utils.sanitizeHTML(track.album.title)} cover" 
                          class="track-cover"
-                         loading="lazy">
+                         loading="lazy">` : '<div class="track-cover" style="background:#ddd;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-music" style="color:#999;"></i></div>'}
                     <div class="track-info">
                         <div class="track-title">${Utils.sanitizeHTML(track.title)}</div>
-                        <div class="track-artist">${Utils.sanitizeHTML(track.artist.name)}</div>
+                        <div class="track-artist">${Utils.sanitizeHTML(track.artist ? track.artist.name : 'Unknown Artist')}</div>
                     </div>
                     ${track.preview ? `
                         <div class="track-preview">
@@ -155,7 +147,7 @@
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
-                    ` : '<div class="track-preview" style="opacity: 0.3;"><i class="fa-solid fa-music"></i> No preview</div>'}
+                    ` : '<div class="track-preview" style="opacity: 0.3; display:flex; align-items:center; gap:0.3rem;"><i class="fa-solid fa-music"></i> No preview</div>'}
                 `;
                 
                 fragment.appendChild(li);
@@ -164,7 +156,6 @@
             DOM.trackList.appendChild(fragment);
             DOM.resultsSection.style.display = 'block';
             
-            // Smooth scroll to results
             DOM.resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         },
 
@@ -283,7 +274,6 @@
                             block: 'start'
                         });
                         
-                        // Close mobile menu if open
                         if (window.innerWidth <= 768 && DOM.nav) {
                             DOM.nav.style.display = 'none';
                         }
@@ -295,7 +285,6 @@
 
     // ===== Initialization =====
     function init() {
-        // Attach event listeners
         if (DOM.form) {
             DOM.form.addEventListener('submit', Handlers.handleFormSubmit);
         }
@@ -307,13 +296,11 @@
         Handlers.handleMobileMenu();
         Handlers.handleSmoothScroll();
         
-        // Load contributors
         UI.renderContributors();
         
         console.log('yoobify initialized successfully.');
     }
 
-    // Run when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
