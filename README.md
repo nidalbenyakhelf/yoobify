@@ -1,4 +1,4 @@
-# 🎵 yoobify
+# 🎵 Yoobify
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Live-blue)](https://nidalbenyakhelf.github.io/yoobify/)
