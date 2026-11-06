@@ -7,11 +7,13 @@
     <meta name="description" content="An open-source music discovery engine that finds common tracks and similar songs across different platforms, languages, and cultures.">
     
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
 </head>
 <body>
 
@@ -25,7 +27,7 @@
             <a href="#platforms">Platforms</a>
             <a href="#faq">FAQ</a>
             <a href="#contribute">Contribute</a>
-            <a href="https://github.com/nidalbenyakhelf/yoobify" target="_blank" rel="noopener">
+            <a href="https://github.com/nidalbenyakhelf/yoobify" target="_blank" rel="noopener" class="btn-primary">
                 <i class="fa-brands fa-github"></i> GitHub
             </a>
         </nav>
@@ -37,22 +39,39 @@
     <!-- Hero Section -->
     <main class="hero-section">
         <div class="hero-content">
-            <h1>Finding the hidden connections in the music we love.</h1>
-            <p>Paste your Deezer playlist link below to start discovering.</p>
+            <h1>Discover the hidden connections in the music we love.</h1>
+            <p class="hero-subtitle">Find common tracks between playlists and explore similar music across different cultures and languages.</p>
             
-            <!-- Form for better UX (Enter key support) -->
-            <form id="playlist-form" class="input-box">
-                <input 
-                    type="url" 
-                    id="playlist-url" 
-                    placeholder="Paste Deezer playlist link (e.g., https://www.deezer.com/playlist/123456)" 
-                    aria-label="Playlist URL"
-                    required
-                >
-                <button type="submit" class="btn-primary">
-                    <i class="fa-solid fa-magnifying-glass"></i> Analyze Playlist
-                </button>
-            </form>
+            <div class="search-container">
+                <div class="platform-selector">
+                    <button class="platform-btn active" data-platform="all">All Platforms</button>
+                    <button class="platform-btn active" data-platform="deezer">Deezer</button>
+                    <button class="platform-btn" data-platform="spotify">Spotify</button>
+                    <button class="platform-btn" data-platform="apple">Apple Music</button>
+                </div>
+                
+                <form id="playlist-form" class="input-box">
+                    <input 
+                        type="url" 
+                        id="playlist-url" 
+                        placeholder="Paste your playlist link here..." 
+                        aria-label="Playlist URL"
+                        required
+                    >
+                    <button type="submit" class="btn-primary">
+                        <i class="fa-solid fa-magnifying-glass"></i> Analyze
+                    </button>
+                </form>
+                
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="random-btn">
+                        <i class="fa-solid fa-shuffle"></i> Random Playlist
+                    </button>
+                    <button class="btn-secondary" id="explore-btn">
+                        <i class="fa-solid fa-compass"></i> Explore Trends
+                    </button>
+                </div>
+            </div>
 
             <!-- Loading State -->
             <div id="loading-state" class="status-message" style="display: none;" aria-live="polite">
@@ -68,19 +87,45 @@
         </div>
 
         <div class="hero-illustration">
-            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="150" cy="150" r="120" fill="none" stroke="#1A1A1A" stroke-width="4"/>
-                <circle cx="150" cy="150" r="90" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-dasharray="6 6"/>
-                <circle cx="150" cy="150" r="60" fill="none" stroke="#FF4422" stroke-width="4"/>
-                <circle cx="150" cy="150" r="25" fill="#FF4422"/>
-                <path d="M 80 80 L 110 110 M 220 80 L 190 110 M 80 220 L 110 190 M 220 220 L 190 190" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
-                <path d="M 150 30 L 150 60 M 150 240 L 150 270 M 30 150 L 60 150 M 240 150 L 270 150" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <g fill="#8B5CF6" opacity="0.6">
+                    <path d="M 100 150 Q 120 140 130 160 Q 140 180 120 190 Q 100 200 90 180 Q 80 160 100 150 Z" />
+                    <path d="M 350 100 Q 370 90 380 110 Q 390 130 370 140 Q 350 150 340 130 Q 330 110 350 100 Z" />
+                    <path d="M 200 350 Q 220 340 230 360 Q 240 380 220 390 Q 200 400 190 380 Q 180 360 200 350 Z" />
+                </g>
+                
+                <circle cx="250" cy="250" r="180" fill="none" stroke="#8B5CF6" stroke-width="3" opacity="0.3"/>
+                <circle cx="250" cy="250" r="150" fill="none" stroke="#06B6D4" stroke-width="3" opacity="0.4" stroke-dasharray="8 8"/>
+                <circle cx="250" cy="250" r="120" fill="none" stroke="#8B5CF6" stroke-width="4" opacity="0.5"/>
+                <circle cx="250" cy="250" r="60" fill="url(#gradient)" opacity="0.8"/>
+                
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <line x1="250" y1="70" x2="250" y2="130" stroke="#8B5CF6" stroke-width="2" opacity="0.6"/>
+                <line x1="250" y1="370" x2="250" y2="430" stroke="#06B6D4" stroke-width="2" opacity="0.6"/>
+                <line x1="70" y1="250" x2="130" y2="250" stroke="#8B5CF6" stroke-width="2" opacity="0.6"/>
+                <line x1="370" y1="250" x2="430" y2="250" stroke="#06B6D4" stroke-width="2" opacity="0.6"/>
+                
+                <path d="M 100 300 Q 150 280 200 300 T 300 300 T 400 300" 
+                      fill="none" stroke="#8B5CF6" stroke-width="3" opacity="0.5"/>
+                <path d="M 100 320 Q 150 300 200 320 T 300 320 T 400 320" 
+                      fill="none" stroke="#06B6D4" stroke-width="3" opacity="0.4"/>
+                
+                <circle cx="150" cy="150" r="8" fill="#FBCFE8" opacity="0.8"/>
+                <circle cx="380" cy="180" r="10" fill="#BBF7D0" opacity="0.8"/>
+                <circle cx="120" cy="380" r="9" fill="#BFDBFE" opacity="0.8"/>
+                <circle cx="400" cy="350" r="7" fill="#E9D5FF" opacity="0.8"/>
             </svg>
         </div>
     </main>
 
     <!-- Results Section (Hidden by default) -->
-    <section id="results-section" class="section results-section" style="display: none;">
+    <section id="results-section" class="results-section" style="display: none;">
         <div class="results-header">
             <h2 id="playlist-title">Playlist Title</h2>
             <p id="playlist-meta">0 tracks • By Unknown</p>
@@ -297,7 +342,7 @@
             </div>
         </div>
 
-        <!-- Contributors List (fetched from GitHub) -->
+        <!-- Contributors List -->
         <div class="contributors-section">
             <h3><i class="fa-solid fa-users"></i> Our Contributors</h3>
             <p>Every person who helps build yoobify is recognized here. This list is pulled directly from GitHub.</p>
