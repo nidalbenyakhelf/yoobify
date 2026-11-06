@@ -42,12 +42,33 @@
             <h1>Discover the hidden connections in the music we love.</h1>
             <p class="hero-subtitle">Find common tracks between playlists and explore similar music across different cultures and languages.</p>
             
-            <div class="search-container">
+            <!-- Simple Search Bar -->
+            <div class="search-bar">
                 <div class="platform-selector">
-                    <button class="platform-btn active" data-platform="all">All Platforms</button>
-                    <button class="platform-btn active" data-platform="deezer">Deezer</button>
-                    <button class="platform-btn" data-platform="spotify">Spotify</button>
-                    <button class="platform-btn" data-platform="apple">Apple Music</button>
+                    <div class="platform-dropdown">
+                        <button class="platform-dropdown-btn" id="platform-btn">
+                            <span id="selected-platform">Select Platform</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="platform-dropdown-menu" id="platform-menu">
+                            <div class="platform-option active" data-platform="all">
+                                <i class="fa-solid fa-globe"></i>
+                                <span>All Platforms</span>
+                            </div>
+                            <div class="platform-option" data-platform="deezer">
+                                <i class="fa-brands fa-deezer"></i>
+                                <span>Deezer</span>
+                            </div>
+                            <div class="platform-option" data-platform="spotify">
+                                <i class="fa-brands fa-spotify"></i>
+                                <span>Spotify</span>
+                            </div>
+                            <div class="platform-option" data-platform="apple">
+                                <i class="fa-brands fa-apple"></i>
+                                <span>Apple Music</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <form id="playlist-form" class="input-box">
@@ -87,44 +108,75 @@
         </div>
 
         <div class="hero-illustration">
+            <!-- Hero SVG Illustration - Vinyl Record Style -->
             <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <g fill="#8B5CF6" opacity="0.6">
-                    <path d="M 100 150 Q 120 140 130 160 Q 140 180 120 190 Q 100 200 90 180 Q 80 160 100 150 Z" />
-                    <path d="M 350 100 Q 370 90 380 110 Q 390 130 370 140 Q 350 150 340 130 Q 330 110 350 100 Z" />
-                    <path d="M 200 350 Q 220 340 230 360 Q 240 380 220 390 Q 200 400 190 380 Q 180 360 200 350 Z" />
+                <!-- Background circles -->
+                <circle cx="250" cy="250" r="200" fill="none" stroke="#1A1A1A" stroke-width="3" opacity="0.15"/>
+                <circle cx="250" cy="250" r="170" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="8 8" opacity="0.25"/>
+                <circle cx="250" cy="250" r="140" fill="none" stroke="#1A1A1A" stroke-width="2" opacity="0.2"/>
+                
+                <!-- Central vinyl record -->
+                <circle cx="250" cy="250" r="110" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+                <circle cx="250" cy="250" r="90" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+                <circle cx="250" cy="250" r="70" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+                <circle cx="250" cy="250" r="50" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+                <circle cx="250" cy="250" r="30" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="3"/>
+                <circle cx="250" cy="250" r="10" fill="#1A1A1A"/>
+                
+                <!-- Grooves on vinyl -->
+                <circle cx="250" cy="250" r="100" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.4"/>
+                <circle cx="250" cy="250" r="80" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.4"/>
+                <circle cx="250" cy="250" r="60" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.4"/>
+                
+                <!-- Music notes floating -->
+                <g stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round">
+                    <!-- Note 1 (top-left) -->
+                    <path d="M 100 120 L 100 170"/>
+                    <ellipse cx="100" cy="175" rx="15" ry="10" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2.5"/>
+                    <path d="M 100 120 Q 125 115 140 125"/>
+                    
+                    <!-- Note 2 (top-right) -->
+                    <path d="M 400 140 L 400 190"/>
+                    <ellipse cx="400" cy="195" rx="15" ry="10" fill="#06B6D4" stroke="#1A1A1A" stroke-width="2.5"/>
+                    <path d="M 400 140 Q 375 135 360 145"/>
+                    
+                    <!-- Note 3 (bottom-left) -->
+                    <path d="M 120 380 L 120 430"/>
+                    <ellipse cx="120" cy="435" rx="15" ry="10" fill="#FBCFE8" stroke="#1A1A1A" stroke-width="2.5"/>
+                    <path d="M 120 380 Q 145 375 160 385"/>
+                    
+                    <!-- Note 4 (bottom-right) -->
+                    <path d="M 380 360 L 380 410"/>
+                    <ellipse cx="380" cy="415" rx="15" ry="10" fill="#BBF7D0" stroke="#1A1A1A" stroke-width="2.5"/>
+                    <path d="M 380 360 Q 355 355 340 365"/>
                 </g>
                 
-                <circle cx="250" cy="250" r="180" fill="none" stroke="#8B5CF6" stroke-width="3" opacity="0.3"/>
-                <circle cx="250" cy="250" r="150" fill="none" stroke="#06B6D4" stroke-width="3" opacity="0.4" stroke-dasharray="8 8"/>
-                <circle cx="250" cy="250" r="120" fill="none" stroke="#8B5CF6" stroke-width="4" opacity="0.5"/>
-                <circle cx="250" cy="250" r="60" fill="url(#gradient)" opacity="0.8"/>
+                <!-- Connection lines -->
+                <g stroke="#1A1A1A" stroke-width="2.5" opacity="0.5">
+                    <line x1="250" y1="50" x2="250" y2="140"/>
+                    <line x1="250" y1="360" x2="250" y2="450"/>
+                    <line x1="50" y1="250" x2="140" y2="250"/>
+                    <line x1="360" y1="250" x2="450" y2="250"/>
+                </g>
                 
-                <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
+                <!-- Small decorative dots -->
+                <circle cx="170" cy="90" r="6" fill="#8B5CF6"/>
+                <circle cx="340" cy="100" r="5" fill="#06B6D4"/>
+                <circle cx="110" cy="310" r="6" fill="#FBCFE8"/>
+                <circle cx="390" cy="300" r="5" fill="#BBF7D0"/>
+                <circle cx="200" cy="420" r="5" fill="#E0F2FE"/>
+                <circle cx="310" cy="430" r="6" fill="#FCE7F3"/>
                 
-                <line x1="250" y1="70" x2="250" y2="130" stroke="#8B5CF6" stroke-width="2" opacity="0.6"/>
-                <line x1="250" y1="370" x2="250" y2="430" stroke="#06B6D4" stroke-width="2" opacity="0.6"/>
-                <line x1="70" y1="250" x2="130" y2="250" stroke="#8B5CF6" stroke-width="2" opacity="0.6"/>
-                <line x1="370" y1="250" x2="430" y2="250" stroke="#06B6D4" stroke-width="2" opacity="0.6"/>
-                
-                <path d="M 100 300 Q 150 280 200 300 T 300 300 T 400 300" 
-                      fill="none" stroke="#8B5CF6" stroke-width="3" opacity="0.5"/>
-                <path d="M 100 320 Q 150 300 200 320 T 300 320 T 400 320" 
-                      fill="none" stroke="#06B6D4" stroke-width="3" opacity="0.4"/>
-                
-                <circle cx="150" cy="150" r="8" fill="#FBCFE8" opacity="0.8"/>
-                <circle cx="380" cy="180" r="10" fill="#BBF7D0" opacity="0.8"/>
-                <circle cx="120" cy="380" r="9" fill="#BFDBFE" opacity="0.8"/>
-                <circle cx="400" cy="350" r="7" fill="#E9D5FF" opacity="0.8"/>
+                <!-- Sound waves -->
+                <path d="M 50 200 Q 80 180 110 200 T 170 200" fill="none" stroke="#8B5CF6" stroke-width="2.5" opacity="0.6"/>
+                <path d="M 330 200 Q 360 180 390 200 T 450 200" fill="none" stroke="#06B6D4" stroke-width="2.5" opacity="0.6"/>
+                <path d="M 50 300 Q 80 320 110 300 T 170 300" fill="none" stroke="#FBCFE8" stroke-width="2.5" opacity="0.8"/>
+                <path d="M 330 300 Q 360 320 390 300 T 450 300" fill="none" stroke="#BBF7D0" stroke-width="2.5" opacity="0.8"/>
             </svg>
         </div>
     </main>
 
-    <!-- Results Section (Hidden by default) -->
+    <!-- Results Section -->
     <section id="results-section" class="results-section" style="display: none;">
         <div class="results-header">
             <h2 id="playlist-title">Playlist Title</h2>
@@ -132,9 +184,7 @@
         </div>
         
         <div class="track-list-container">
-            <ul id="track-list" class="track-list">
-                <!-- Tracks will be injected here by JavaScript -->
-            </ul>
+            <ul id="track-list" class="track-list"></ul>
         </div>
 
         <div class="results-actions">
@@ -150,17 +200,43 @@
         <p class="section-subtitle">Three simple steps to discover music across borders.</p>
         <div class="cards-grid">
             <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-link"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="15" width="40" height="30" rx="3" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <line x1="20" y1="25" x2="40" y2="25" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="20" y1="32" x2="35" y2="32" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="20" y1="39" x2="30" y2="39" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="45" cy="10" r="8" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2"/>
+                        <path d="M 42 10 L 44 12 L 48 8" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3>1. Paste Your Playlists</h3>
                 <p>Drop links from Spotify or Deezer. You can paste multiple playlists to compare them.</p>
             </div>
             <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="15" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <line x1="36" y1="36" x2="48" y2="48" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="25" cy="25" r="8" fill="none" stroke="#06B6D4" stroke-width="2"/>
+                        <path d="M 20 22 L 25 27 L 32 18" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3>2. We Find the Overlap</h3>
                 <p>Our algorithm identifies songs that appear in multiple playlists and analyzes their shared traits.</p>
             </div>
             <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="22" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <ellipse cx="30" cy="30" rx="10" ry="22" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+                        <line x1="8" y1="30" x2="52" y2="30" stroke="#1A1A1A" stroke-width="2"/>
+                        <line x1="12" y1="18" x2="48" y2="18" stroke="#1A1A1A" stroke-width="1.5"/>
+                        <line x1="12" y1="42" x2="48" y2="42" stroke="#1A1A1A" stroke-width="1.5"/>
+                        <circle cx="30" cy="30" r="5" fill="#8B5CF6" stroke="#1A1A1A" stroke-width="2"/>
+                        <path d="M 45 10 L 50 10 L 50 15" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
                 <h3>3. Discover New Music</h3>
                 <p>Based on common tracks, we suggest similar songs from other languages and cultures you might love.</p>
             </div>
@@ -173,12 +249,32 @@
         <p class="section-subtitle">Currently integrated and ready to use.</p>
         <div class="platforms-grid">
             <div class="platform-card">
-                <div class="platform-logo"><i class="fa-brands fa-spotify"></i></div>
+                <div class="platform-logo">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="25" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <path d="M 18 25 Q 30 22 42 25" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 20 32 Q 30 30 40 32" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M 22 39 Q 30 37 38 39" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="30" cy="30" r="5" fill="#8B5CF6" opacity="0.3"/>
+                    </svg>
+                </div>
                 <h3>Spotify</h3>
                 <p>Full API integration</p>
             </div>
             <div class="platform-card">
-                <div class="platform-logo"><i class="fa-brands fa-deezer"></i></div>
+                <div class="platform-logo">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="12" height="12" fill="#1A1A1A" opacity="0.2"/>
+                        <rect x="24" y="10" width="12" height="12" fill="#1A1A1A" opacity="0.4"/>
+                        <rect x="38" y="10" width="12" height="12" fill="#1A1A1A" opacity="0.6"/>
+                        <rect x="10" y="24" width="12" height="12" fill="#1A1A1A" opacity="0.4"/>
+                        <rect x="24" y="24" width="12" height="12" fill="#1A1A1A" opacity="0.6"/>
+                        <rect x="38" y="24" width="12" height="12" fill="#8B5CF6" opacity="0.8"/>
+                        <rect x="10" y="38" width="12" height="12" fill="#1A1A1A" opacity="0.6"/>
+                        <rect x="24" y="38" width="12" height="12" fill="#8B5CF6" opacity="0.8"/>
+                        <rect x="38" y="38" width="12" height="12" fill="#8B5CF6"/>
+                    </svg>
+                </div>
                 <h3>Deezer</h3>
                 <p>Full API integration</p>
             </div>
@@ -189,22 +285,48 @@
             <p>These are not available yet. We're working on them, and we'd love your help to make it happen.</p>
             <div class="platforms-grid future-grid">
                 <div class="platform-card future">
-                    <div class="platform-logo"><i class="fa-brands fa-apple"></i></div>
+                    <div class="platform-logo">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="22" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                            <path d="M 30 15 L 30 30 L 42 30" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="30" cy="30" r="4" fill="#1A1A1A"/>
+                        </svg>
+                    </div>
                     <h3>Apple Music</h3>
                     <p>Planned</p>
                 </div>
                 <div class="platform-card future">
-                    <div class="platform-logo"><i class="fa-brands fa-youtube"></i></div>
+                    <div class="platform-logo">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="15" y="12" width="30" height="36" rx="3" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                            <polygon points="25,22 25,38 38,30" fill="#1A1A1A" opacity="0.3"/>
+                            <circle cx="30" cy="42" r="2" fill="#1A1A1A"/>
+                        </svg>
+                    </div>
                     <h3>YouTube Music</h3>
                     <p>Planned</p>
                 </div>
                 <div class="platform-card future">
-                    <div class="platform-logo"><i class="fa-brands fa-soundcloud"></i></div>
+                    <div class="platform-logo">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="20" r="10" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                            <path d="M 15 45 Q 15 30 30 30 Q 45 30 45 45" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                            <path d="M 20 45 L 40 45" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <h3>SoundCloud</h3>
                     <p>Planned</p>
                 </div>
                 <div class="platform-card future">
-                    <div class="platform-logo"><i class="fa-solid fa-music"></i></div>
+                    <div class="platform-logo">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 15 35 Q 20 20 30 25 Q 40 30 45 20" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="15" cy="35" r="3" fill="#8B5CF6"/>
+                            <circle cx="30" cy="25" r="3" fill="#06B6D4"/>
+                            <circle cx="45" cy="20" r="3" fill="#1A1A1A"/>
+                            <line x1="10" y1="45" x2="50" y2="45" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <h3>Anghami</h3>
                     <p>Planned</p>
                 </div>
@@ -216,22 +338,45 @@
     <section id="algorithm" class="section">
         <h2>Our algorithm (in simple words)</h2>
         <div class="algorithm-box">
-            <p>We don't use magic. We use math and music theory.</p>
-            <ul>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <strong>Track Matching:</strong> We compare song titles, artists, and duration to find exact matches across platforms.
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <strong>Audio Features:</strong> We analyze tempo (BPM), key, energy, and mood to find similar songs.
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <strong>Cultural Bridges:</strong> If you like Arabic pop with 120 BPM, we'll find Turkish, Spanish, or French songs with similar vibes.
-                </li>
-            </ul>
-            <p class="note"><i class="fa-solid fa-flask"></i> Want to improve our algorithm? Check the <a href="#contribute">contribute section</a> below.</p>
+            <div class="algorithm-content">
+                <p>We don't use magic. We use math and music theory.</p>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        <strong>Track Matching:</strong> We compare song titles, artists, and duration to find exact matches across platforms.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        <strong>Audio Features:</strong> We analyze tempo (BPM), key, energy, and mood to find similar songs.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        <strong>Cultural Bridges:</strong> If you like Arabic pop with 120 BPM, we'll find Turkish, Spanish, or French songs with similar vibes.
+                    </li>
+                </ul>
+                <p class="note"><i class="fa-solid fa-flask"></i> Want to improve our algorithm? Check the <a href="#contribute">contribute section</a> below.</p>
+            </div>
+            <div class="algorithm-illustration">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#10B981" stroke-width="2.5"/>
+                    <path d="M 70 80 Q 80 70 90 80 Q 100 70 110 80 Q 120 70 130 80" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M 70 100 Q 80 90 90 100 Q 100 90 110 100 Q 120 90 130 100" fill="none" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M 70 120 Q 80 110 90 120 Q 100 110 110 120 Q 120 110 130 120" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+                    
+                    <line x1="30" y1="50" x2="60" y2="70" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                    <polygon points="60,70 55,65 58,72" fill="#1A1A1A"/>
+                    
+                    <line x1="170" y1="50" x2="140" y2="70" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                    <polygon points="140,70 145,65 142,72" fill="#1A1A1A"/>
+                    
+                    <line x1="100" y1="170" x2="100" y2="190" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+                    <polygon points="100,190 95,183 105,183" fill="#10B981"/>
+                    
+                    <circle cx="50" cy="150" r="4" fill="#FBCFE8"/>
+                    <circle cx="150" cy="150" r="4" fill="#BBF7D0"/>
+                    <circle cx="100" cy="30" r="4" fill="#E0F2FE"/>
+                </svg>
+            </div>
         </div>
     </section>
 
@@ -311,32 +456,76 @@
         
         <div class="needs-grid">
             <div class="need-card">
-                <div class="card-icon"><i class="fa-solid fa-language"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="25" r="12" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <path d="M 15 50 Q 15 38 30 38 Q 45 38 45 50" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <text x="30" y="30" text-anchor="middle" font-size="14" fill="#8B5CF6" font-weight="bold">A</text>
+                        <text x="45" y="20" text-anchor="middle" font-size="10" fill="#06B6D4" font-weight="bold">ع</text>
+                    </svg>
+                </div>
                 <h3>Translators</h3>
                 <p>Help us add more languages. Currently we support English and Arabic, but we need French, Spanish, Turkish, and more.</p>
             </div>
             <div class="need-card">
-                <div class="card-icon"><i class="fa-solid fa-flask-vial"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="15" y="10" width="30" height="40" rx="3" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <path d="M 22 22 L 28 28 L 38 18" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="22" y1="35" x2="38" y2="35" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="22" y1="42" x2="32" y2="42" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
                 <h3>Algorithm Improvers</h3>
                 <p>Our matching algorithm works, but it can be smarter. If you know music theory or machine learning, we need you.</p>
             </div>
             <div class="need-card">
-                <div class="card-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="15" width="40" height="30" rx="2" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <circle cx="22" cy="28" r="5" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+                        <rect x="32" y="23" width="12" height="3" fill="#1A1A1A"/>
+                        <rect x="32" y="29" width="8" height="3" fill="#1A1A1A" opacity="0.5"/>
+                        <path d="M 15 40 L 25 40 L 28 35 L 32 42 L 35 38 L 45 38" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3>Designers</h3>
                 <p>Our design is simple and clean, but it could be more beautiful. If you have an eye for UI/UX, please help us.</p>
             </div>
             <div class="need-card">
-                <div class="card-icon"><i class="fa-solid fa-plug"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="15" width="20" height="30" rx="2" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <circle cx="30" cy="22" r="3" fill="#1A1A1A"/>
+                        <line x1="25" y1="30" x2="35" y2="30" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="25" y1="36" x2="35" y2="36" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="25" y1="42" x2="30" y2="42" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M 45 20 L 50 20 L 50 25" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="45" y1="25" x2="50" y2="20" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
                 <h3>API Integrators</h3>
                 <p>We want to support more platforms. If you've worked with Apple Music, YouTube Music, or SoundCloud APIs, we'd love your help.</p>
             </div>
             <div class="need-card">
-                <div class="card-icon"><i class="fa-solid fa-bug"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="20" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <path d="M 22 22 L 38 38 M 38 22 L 22 38" stroke="#DC2626" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="30" cy="30" r="5" fill="#FBCFE8" stroke="#1A1A1A" stroke-width="2"/>
+                    </svg>
+                </div>
                 <h3>Bug Hunters</h3>
                 <p>Test the app, find bugs, and report them. Every bug you find makes yoobify better for everyone.</p>
             </div>
             <div class="need-card">
-                <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 15 30 Q 15 15 30 15 Q 45 15 45 30 Q 45 45 30 45 Q 15 45 15 30" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+                        <path d="M 30 15 L 30 8 M 22 17 L 18 11 M 38 17 L 42 11" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 22 28 L 28 34 L 38 24" fill="none" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3>Community Builders</h3>
                 <p>Share yoobify with your friends, write about it, or help us grow our community on Reddit and GitHub.</p>
             </div>
@@ -401,7 +590,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Built with patience, curiosity, and a lot of coffee by <strong>Nidal Ben yakhelf</strong> <i class="fa-solid fa-mug-hot"></i></p>
+            <p>Built with patience, curiosity, and a lot of coffee by <strong>Ben Khelaf Nidal</strong> <i class="fa-solid fa-mug-hot"></i></p>
             <p>&copy; 2026 yoobify. Open source under MIT License.</p>
         </div>
     </footer>
