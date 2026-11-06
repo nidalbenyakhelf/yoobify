@@ -1,29 +1,73 @@
-# 🎵 Yoobify
+# 🎵 yoobify
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Live-blue)](https://nidalbenyakhelf.github.io/yoobify/)
+[![Deezer API](https://img.shields.io/badge/Deezer-API_Integrated-purple)](https://developers.deezer.com/api)
 
 **Finding the hidden connections in the music we love.**
 
-Hi there I'm Nidal. I started building yoobify out of a simple, everyday frustration: music apps are great, but they often keep us in bubbles. 
+yoobify is an open-source music discovery engine that helps you find common tracks between playlists and discover similar music across different languages and cultures.
 
-Have you ever heard an amazing song in a language you don't speak and wished you could find more like it? Or maybe you have two different playlists, and you wonder: "What songs do these actually have in common, and can this lead me to something new?"
+##  What's Working Now
 
-yoobify is my attempt to break those walls. It’s an open-source tool designed to find common tracks between multiple playlists and use that shared vibe to suggest new music across different platforms, languages, and cultures.
+- ✅ **Deezer Integration** — Paste any public Deezer playlist URL and get instant results
+- ✅ **Track Analysis** — View all tracks with album art, artist info, and 30-second previews
+- ✅ **No Account Required** — Completely free, no login, no ads
+- ✅ **Clean Linear Design** — Modern UI inspired by Brave browser
+- ✅ **Fully Responsive** — Works beautifully on mobile and desktop
 
-###  What I'm trying to build:
-- **Playlist Overlap & Smart Suggestions**: Paste links to multiple playlists (from Spotify, Deezer, etc.). yoobify will find the exact songs they share, and based on that common ground, it will suggest the second playlist (or similar ones) to help you discover more of what you already love.
-- **Cultural Bridges**: Discover songs in other languages that share the same mood, tempo, or soul as your favorite tracks.
-- **A Human-Friendly Design**: No clutter, no confusing algorithms hiding in the dark. Just a clean, simple, and linear interface that respects your time and attention.
+##  Try It Now
 
-###  Where we are right now:
-I believe in building things step by step, the right way. Right now, this is the very early foundation of the project. I’m setting up a clean, professional structure before diving into the complex parts (like API integrations and music analysis). 
+Visit the live site: **[yoobify.github.io](https://nidalbenyakhelf.github.io/yoobify/)**
 
-###  Want to join the journey?
-I’m building this to learn, to solve a real problem, and to connect with others who care about music and open code. If you have an idea, spot a bug, or just want to chat about the project, please open an issue or reach out. No contribution is too small, and every piece of feedback is genuinely appreciated.
+### Quick Start
+1. Copy a Deezer playlist URL (e.g., `https://www.deezer.com/playlist/1313621735`)
+2. Paste it into the input field on yoobify
+3. Click "Analyze Playlist"
+4. Explore the tracks with built-in audio previews!
 
-###  License
+##  What's Coming Next
+
+- [ ] **Playlist Comparison** — Find common tracks between two playlists
+- [ ] **Spotify Integration** — Support for Spotify playlists
+- [ ] **Smart Recommendations** — Suggest similar songs from other languages/cultures
+- [ ] **Multi-language Support** — Arabic, French, Spanish, and more
+- [ ] **PWA Support** — Install yoobify as a mobile app
+
+##  Tech Stack
+
+- **Frontend:** Vanilla JavaScript (ES6+), HTML5, CSS3
+- **APIs:** Deezer API (public, no auth required)
+- **Hosting:** GitHub Pages with automated deployment
+- **Icons:** Font Awesome
+- **Fonts:** Inter & Tajawal (Google Fonts)
+
+##  Contributing
+
+I'm Nidal, a mid-level developer building this project to learn and connect with others. I'm not a senior engineer, and that's exactly why this project is open source — I need your help to make it better!
+
+### Ways to Contribute
+-  **Translators** — Help us add more languages
+-  **Algorithm Improvers** — Make our matching smarter
+-  **Designers** — Improve the UI/UX
+-  **API Integrators** — Add Spotify, Apple Music, etc.
+-  **Bug Hunters** — Test and report issues
+-  **Community Builders** — Share yoobify with others
+
+See our [Contributing Guide](CONTRIBUTING.md) for details.
+
+##  Documentation
+
+- [Architecture](docs/architecture.md) — Technical structure and roadmap
+- [API Documentation](docs/API.md) — How we integrate with Deezer
+- [Changelog](CHANGELOG.md) — Version history
+- [Code of Conduct](CODE_OF_CONDUCT.md) — Community guidelines
+- [Security Policy](SECURITY.md) — Reporting vulnerabilities
+
+##  License
+
 This project is free and open for everyone to use, learn from, and build upon under the [MIT License](LICENSE).
 
 ---
-*Built by Nidal Ben yakhelf.* ☕
-*GitHub: [@nidalbenyakhelf](https://github.com/nidalbenyakhelf)*
+
+*Built by [Nidal Ben yakhelf](https://github.com/nidalbenyakhelf).* ☕
