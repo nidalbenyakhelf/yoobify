@@ -10,8 +10,12 @@
     const CONFIG = {
         GITHUB_REPO: 'nidalbenyakhelf/yoobify',
         DEEZER_API_BASE: 'https://api.deezer.com',
-        // CORS Proxy to bypass browser restrictions
-        CORS_PROXY: 'https://corsproxy.io/?',
+        // Multiple CORS proxies as fallback
+        CORS_PROXIES: [
+            'https://api.allorigins.win/raw?url=',
+            'https://corsproxy.io/?',
+            'https://cors-anywhere.herokuapp.com/'
+        ],
         PLAYLIST_ID_REGEX: /playlist\/(\d+)/i
     };
 
@@ -54,26 +58,30 @@
     // ===== API Services =====
     const API = {
         /**
-         * Fetches playlist data from Deezer API via CORS proxy
+         * Fetches playlist data from Deezer API via CORS proxy with fallback
          */
         async getDeezerPlaylist(playlistId) {
             const directUrl = `${CONFIG.DEEZER_API_BASE}/playlist/${playlistId}`;
-            // Use CORS proxy to bypass browser restrictions
-            const proxyUrl = `${CONFIG.CORS_PROXY}${encodeURIComponent(directUrl)}`;
             
-            const response = await fetch(proxyUrl);
-            
-            if (!response.ok) {
-                if (response.status === 404) {
-                    throw new Error('Playlist not found. Please check the URL and try again.');
+            // Try each proxy until one works
+            for (const proxy of CONFIG.CORS_PROXIES) {
+                try {
+                    const proxyUrl = `${proxy}${encodeURIComponent(directUrl)}`;
+                    const response = await fetch(proxyUrl);
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data && data.tracks) {
+                            return data;
+                        }
+                    }
+                } catch (error) {
+                    console.warn(`Proxy ${proxy} failed, trying next...`);
+                    continue;
                 }
-                if (response.status === 429) {
-                    throw new Error('Too many requests. Please wait a moment and try again.');
-                }
-                throw new Error('Failed to fetch playlist. Please try again later.');
             }
             
-            return await response.json();
+            throw new Error('All CORS proxies failed. Please try again later.');
         },
 
         /**
