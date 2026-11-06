@@ -4,7 +4,7 @@
 
 **Finding the hidden connections in the music we love.**
 
-Hi there! I'm Nidal. I started building yoobify out of a simple, everyday frustration: music apps are great, but they often keep us in bubbles. 
+Hi there I'm Nidal. I started building yoobify out of a simple, everyday frustration: music apps are great, but they often keep us in bubbles. 
 
 Have you ever heard an amazing song in a language you don't speak and wished you could find more like it? Or maybe you have two different playlists, and you wonder: "What songs do these actually have in common, and can this lead me to something new?"
 
