@@ -1,7 +1,7 @@
 /**
  * yoobify - Main Application Logic
  * Uses Deezer JSONP API to bypass CORS restrictions
- * Version: 0.2.0
+ * Version: 0.2.1
  */
 
 (function() {
@@ -11,7 +11,13 @@
     const CONFIG = {
         GITHUB_REPO: 'nidalbenyakhelf/yoobify',
         DEEZER_API_BASE: 'https://api.deezer.com',
-        PLAYLIST_ID_REGEX: /playlist\/(\d+)/i
+        PLAYLIST_ID_REGEX: /playlist\/(\d+)/i,
+        SAMPLE_PLAYLISTS: [
+            'https://www.deezer.com/playlist/1313621735',
+            'https://www.deezer.com/playlist/1479458365',
+            'https://www.deezer.com/playlist/2241476382',
+            'https://www.deezer.com/playlist/1963962142'
+        ]
     };
 
     // ===== DOM Elements =====
@@ -28,22 +34,19 @@
         resetBtn: document.getElementById('reset-btn'),
         contributorsList: document.getElementById('contributors-list'),
         mobileMenuBtn: document.querySelector('.mobile-menu-btn'),
-        nav: document.querySelector('.site-header nav')
+        nav: document.querySelector('.site-header nav'),
+        randomBtn: document.getElementById('random-btn'),
+        exploreBtn: document.getElementById('explore-btn'),
+        platformBtns: document.querySelectorAll('.platform-btn')
     };
 
     // ===== Utility Functions =====
     const Utils = {
-        /**
-         * Extracts playlist ID from a Deezer URL
-         */
         extractPlaylistId(url) {
             const match = url.match(CONFIG.PLAYLIST_ID_REGEX);
             return match ? match[1] : null;
         },
 
-        /**
-         * Sanitizes HTML to prevent XSS attacks
-         */
         sanitizeHTML(str) {
             if (!str) return '';
             const temp = document.createElement('div');
@@ -51,47 +54,35 @@
             return temp.innerHTML;
         },
 
-        /**
-         * Formats number with commas (e.g., 1000 -> 1,000)
-         */
         formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
 
-        /**
-         * JSONP helper - bypasses CORS by loading script tags
-         * Deezer officially supports JSONP via output=jsonp parameter
-         */
         jsonp(url, callbackName = 'callback') {
             return new Promise((resolve, reject) => {
                 const uniqueCallback = 'yoobify_jsonp_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
                 const separator = url.includes('?') ? '&' : '?';
                 const fullUrl = `${url}${separator}output=jsonp&${callbackName}=${uniqueCallback}`;
 
-                // Create global callback function
                 window[uniqueCallback] = function(data) {
                     resolve(data);
                     cleanup();
                 };
 
-                // Create and append script tag
                 const script = document.createElement('script');
                 script.src = fullUrl;
                 script.async = true;
 
-                // Handle timeout
                 const timeout = setTimeout(() => {
                     reject(new Error('Request timed out'));
                     cleanup();
                 }, 10000);
 
-                // Handle script load errors
                 script.onerror = function() {
                     reject(new Error('Failed to load script'));
                     cleanup();
                 };
 
-                // Cleanup function
                 function cleanup() {
                     clearTimeout(timeout);
                     delete window[uniqueCallback];
@@ -107,10 +98,6 @@
 
     // ===== API Services =====
     const API = {
-        /**
-         * Fetches playlist data from Deezer API using JSONP
-         * This bypasses CORS restrictions completely
-         */
         async getDeezerPlaylist(playlistId) {
             const url = `${CONFIG.DEEZER_API_BASE}/playlist/${playlistId}`;
             
@@ -133,9 +120,6 @@
             }
         },
 
-        /**
-         * Fetches contributors from GitHub API
-         */
         async getContributors() {
             const url = `https://api.github.com/repos/${CONFIG.GITHUB_REPO}/contributors?per_page=20`;
             const response = await fetch(url);
@@ -171,16 +155,13 @@
         displayResults(playlist) {
             UI.hideAllStates();
             
-            // Update header info
             DOM.playlistTitle.textContent = Utils.sanitizeHTML(playlist.title);
             const trackCount = Utils.formatNumber(playlist.nb_tracks);
             const creator = playlist.creator ? Utils.sanitizeHTML(playlist.creator.name) : 'Unknown';
             DOM.playlistMeta.textContent = `${trackCount} tracks • By ${creator}`;
             
-            // Clear previous tracks
             DOM.trackList.innerHTML = '';
             
-            // Use DocumentFragment for better performance
             const fragment = document.createDocumentFragment();
             
             playlist.tracks.data.forEach(track => {
@@ -216,7 +197,6 @@
             DOM.trackList.appendChild(fragment);
             DOM.resultsSection.style.display = 'block';
             
-            // Smooth scroll to results
             DOM.resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         },
 
@@ -302,6 +282,31 @@
             UI.resetView();
         },
 
+        handleRandomPlaylist() {
+            const randomIndex = Math.floor(Math.random() * CONFIG.SAMPLE_PLAYLISTS.length);
+            DOM.input.value = CONFIG.SAMPLE_PLAYLISTS[randomIndex];
+            DOM.form.dispatchEvent(new Event('submit'));
+        },
+
+        handleExploreTrends() {
+            const howItWorks = document.getElementById('how-it-works');
+            if (howItWorks) {
+                howItWorks.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        },
+
+        handlePlatformSelection(e) {
+            const platform = e.target.dataset.platform;
+            
+            if (platform === 'all') {
+                DOM.platformBtns.forEach(btn => btn.classList.add('active'));
+            } else {
+                const allBtn = document.querySelector('[data-platform="all"]');
+                if (allBtn) allBtn.classList.remove('active');
+                e.target.classList.toggle('active');
+            }
+        },
+
         handleMobileMenu() {
             if (!DOM.mobileMenuBtn || !DOM.nav) return;
             
@@ -314,10 +319,11 @@
                 DOM.nav.style.right = '0';
                 DOM.nav.style.left = '0';
                 DOM.nav.style.background = '#FFFFFF';
-                DOM.nav.style.borderBottom = '3px solid #1A1A1A';
+                DOM.nav.style.borderBottom = '1px solid rgba(139, 92, 246, 0.1)';
                 DOM.nav.style.padding = '1rem';
                 DOM.nav.style.gap = '0.5rem';
                 DOM.nav.style.zIndex = '99';
+                DOM.nav.style.boxShadow = '0 4px 6px -1px rgba(139, 92, 246, 0.1)';
             });
         },
 
@@ -335,7 +341,6 @@
                             block: 'start'
                         });
                         
-                        // Close mobile menu if open
                         if (window.innerWidth <= 768 && DOM.nav) {
                             DOM.nav.style.display = 'none';
                         }
@@ -347,24 +352,39 @@
 
     // ===== Initialization =====
     function init() {
-        // Attach form submit handler
+        // Form submit
         if (DOM.form) {
             DOM.form.addEventListener('submit', Handlers.handleFormSubmit);
         }
         
-        // Attach reset button handler
+        // Reset button
         if (DOM.resetBtn) {
             DOM.resetBtn.addEventListener('click', Handlers.handleReset);
         }
         
-        // Attach mobile menu and smooth scroll handlers
+        // Random playlist button
+        if (DOM.randomBtn) {
+            DOM.randomBtn.addEventListener('click', Handlers.handleRandomPlaylist);
+        }
+        
+        // Explore trends button
+        if (DOM.exploreBtn) {
+            DOM.exploreBtn.addEventListener('click', Handlers.handleExploreTrends);
+        }
+        
+        // Platform selection
+        DOM.platformBtns.forEach(btn => {
+            btn.addEventListener('click', Handlers.handlePlatformSelection);
+        });
+        
+        // Mobile menu and smooth scroll
         Handlers.handleMobileMenu();
         Handlers.handleSmoothScroll();
         
         // Load contributors
         UI.renderContributors();
         
-        console.log('yoobify initialized successfully.');
+        console.log('yoobify initialized successfully. Version 0.2.1');
     }
 
     // Run initialization when DOM is ready
