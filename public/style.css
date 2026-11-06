@@ -59,7 +59,7 @@ a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--color-primary);
+    color: var(--color-text);
 }
 
 .logo img {
