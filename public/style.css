@@ -76,7 +76,7 @@ a {
     padding: 0.5rem 1rem;
     border: 2px solid var(--color-border);
     border-radius: 8px;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -84,18 +84,20 @@ a {
 }
 
 .site-header nav a:hover {
-    border-color: var(--color-primary);
+    box-shadow: 4px 4px 0px var(--color-border);
+    transform: translateY(-2px);
 }
 
 .site-header nav a.btn-primary {
     background-color: var(--color-primary);
     color: #FFFFFF;
-    border-color: var(--color-primary);
+    border-color: var(--color-border);
 }
 
 .site-header nav a.btn-primary:hover {
     background-color: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
+    box-shadow: 4px 4px 0px var(--color-border);
+    transform: translateY(-2px);
 }
 
 .mobile-menu-btn {
@@ -172,11 +174,12 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .platform-dropdown-btn:hover {
-    border-color: var(--color-primary);
+    box-shadow: 3px 3px 0px var(--color-border);
+    transform: translateY(-2px);
 }
 
 .platform-dropdown-menu {
@@ -239,11 +242,11 @@ a {
     font-family: inherit;
     outline: none;
     background: #FFFFFF;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .input-box input:focus {
-    border-color: var(--color-primary);
+    box-shadow: 4px 4px 0px var(--color-border);
 }
 
 .btn-primary {
@@ -255,7 +258,7 @@ a {
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -264,6 +267,8 @@ a {
 
 .btn-primary:hover {
     background-color: var(--color-primary-hover);
+    box-shadow: 4px 4px 0px var(--color-border);
+    transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -275,7 +280,7 @@ a {
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -283,7 +288,8 @@ a {
 }
 
 .btn-secondary:hover {
-    border-color: var(--color-primary);
+    box-shadow: 3px 3px 0px var(--color-border);
+    transform: translateY(-2px);
 }
 
 .action-buttons {
@@ -462,17 +468,21 @@ a {
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .card:hover, .platform-card:hover, .need-card:hover {
-    border-color: var(--color-primary);
+    box-shadow: 6px 6px 0px var(--color-border);
+    transform: translateY(-4px);
 }
 
 .card-icon {
-    font-size: 2.5rem;
-    color: var(--color-primary);
     margin-bottom: 1rem;
+}
+
+.card-icon svg {
+    width: 60px;
+    height: 60px;
 }
 
 .platform-logo {
@@ -529,9 +539,25 @@ a {
     border-radius: 16px;
     padding: 2.5rem;
     margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
 }
 
-.algorithm-box > p:first-child {
+.algorithm-content {
+    flex: 1;
+}
+
+.algorithm-illustration {
+    flex: 0 0 200px;
+}
+
+.algorithm-illustration svg {
+    width: 100%;
+    height: auto;
+}
+
+.algorithm-box > .algorithm-content > p:first-child {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
@@ -646,11 +672,12 @@ a {
     padding: 1.5rem;
     margin-bottom: 1rem;
     background: #FFFFFF;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .faq-item:hover {
-    border-color: var(--color-primary);
+    box-shadow: 4px 4px 0px var(--color-border);
+    transform: translateY(-2px);
 }
 
 .faq-item h3 {
@@ -784,11 +811,12 @@ a {
     border-radius: 12px;
     padding: 1rem;
     text-align: center;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .contributor-card:hover {
-    border-color: var(--color-primary);
+    box-shadow: 4px 4px 0px var(--color-border);
+    transform: translateY(-3px);
 }
 
 .contributor-card img {
@@ -929,6 +957,14 @@ a {
     
     .action-buttons {
         justify-content: center;
+    }
+    
+    .algorithm-box {
+        flex-direction: column;
+    }
+    
+    .algorithm-illustration {
+        flex: 0 0 auto;
     }
 }
 
