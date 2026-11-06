@@ -25,7 +25,7 @@
             <a href="#platforms">Platforms</a>
             <a href="#faq">FAQ</a>
             <a href="#contribute">Contribute</a>
-            <a href="https://github.com/nidalbenyakhelf/yoobify" target="_blank">
+            <a href="https://github.com/nidalbenyakhelf/yoobify" target="_blank" rel="noopener">
                 <i class="fa-brands fa-github"></i> GitHub
             </a>
         </nav>
@@ -38,13 +38,32 @@
     <main class="hero-section">
         <div class="hero-content">
             <h1>Finding the hidden connections in the music we love.</h1>
-            <p>Paste your playlists. Find the overlap. Discover new cultures.</p>
+            <p>Paste your Deezer playlist link below to start discovering.</p>
             
-            <div class="input-box">
-                <input type="text" placeholder="Paste Spotify or Deezer playlist link here..." aria-label="Playlist URL">
-                <button class="btn-primary">
-                    <i class="fa-solid fa-magnifying-glass"></i> Find Connections
+            <!-- Form for better UX (Enter key support) -->
+            <form id="playlist-form" class="input-box">
+                <input 
+                    type="url" 
+                    id="playlist-url" 
+                    placeholder="Paste Deezer playlist link (e.g., https://www.deezer.com/playlist/123456)" 
+                    aria-label="Playlist URL"
+                    required
+                >
+                <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i> Analyze Playlist
                 </button>
+            </form>
+
+            <!-- Loading State -->
+            <div id="loading-state" class="status-message" style="display: none;" aria-live="polite">
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                <p>Analyzing playlist... This may take a moment.</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state" class="status-message error" style="display: none;" aria-live="assertive">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p id="error-text">Something went wrong.</p>
             </div>
         </div>
 
@@ -59,6 +78,26 @@
             </svg>
         </div>
     </main>
+
+    <!-- Results Section (Hidden by default) -->
+    <section id="results-section" class="section results-section" style="display: none;">
+        <div class="results-header">
+            <h2 id="playlist-title">Playlist Title</h2>
+            <p id="playlist-meta">0 tracks • By Unknown</p>
+        </div>
+        
+        <div class="track-list-container">
+            <ul id="track-list" class="track-list">
+                <!-- Tracks will be injected here by JavaScript -->
+            </ul>
+        </div>
+
+        <div class="results-actions">
+            <button id="reset-btn" class="btn-secondary">
+                <i class="fa-solid fa-rotate-left"></i> Analyze Another Playlist
+            </button>
+        </div>
+    </section>
 
     <!-- How It Works -->
     <section id="how-it-works" class="section">
@@ -270,14 +309,14 @@
             </div>
             <p class="contributors-note">
                 <i class="fa-solid fa-heart"></i> Be the next contributor! Check our 
-                <a href="https://github.com/yourusername/yoobify/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guide</a>.
+                <a href="https://github.com/nidalbenyakhelf/yoobify/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing Guide</a>.
             </p>
         </div>
 
         <div class="cta-box">
             <h3>Ready to join?</h3>
-            <p>Check our <a href="https://github.com/yourusername/yoobify/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guide</a> or open an issue on GitHub.</p>
-            <a href="https://github.com/yourusername/yoobify" target="_blank" class="btn-primary">
+            <p>Check our <a href="https://github.com/nidalbenyakhelf/yoobify/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing Guide</a> or open an issue on GitHub.</p>
+            <a href="https://github.com/nidalbenyakhelf/yoobify" target="_blank" rel="noopener" class="btn-primary">
                 <i class="fa-brands fa-github"></i> Go to GitHub
             </a>
         </div>
@@ -302,16 +341,16 @@
             <div class="footer-section">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="https://github.com/yourusername/yoobify/blob/main/LICENSE" target="_blank">MIT License</a></li>
-                    <li><a href="https://github.com/yourusername/yoobify/blob/main/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a></li>
-                    <li><a href="https://github.com/yourusername/yoobify/blob/main/SECURITY.md" target="_blank">Security Policy</a></li>
+                    <li><a href="https://github.com/nidalbenyakhelf/yoobify/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+                    <li><a href="https://github.com/nidalbenyakhelf/yoobify/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct</a></li>
+                    <li><a href="https://github.com/nidalbenyakhelf/yoobify/blob/main/SECURITY.md" target="_blank" rel="noopener">Security Policy</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Connect</h4>
                 <ul>
-                    <li><a href="https://github.com/yourusername/yoobify" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
-                    <li><a href="https://reddit.com/r/yoobify" target="_blank"><i class="fa-brands fa-reddit"></i> Reddit</a></li>
+                    <li><a href="https://github.com/nidalbenyakhelf/yoobify" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                    <li><a href="https://reddit.com/r/yoobify" target="_blank" rel="noopener"><i class="fa-brands fa-reddit"></i> Reddit</a></li>
                     <li><a href="mailto:your@email.com"><i class="fa-solid fa-envelope"></i> Email</a></li>
                 </ul>
             </div>
