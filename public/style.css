@@ -59,7 +59,7 @@ a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--color-text);
+    color: var(--color-primary);
 }
 
 .logo img {
@@ -258,7 +258,7 @@ a {
 
 .hero-illustration svg {
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     height: auto;
 }
 
@@ -1029,8 +1029,6 @@ a {
 }
 
 /* ===== Unified Icon Colors ===== */
-
-/* Platform icons - Unified black/dark color */
 .platform-logo i {
     color: var(--color-text) !important;
     font-size: 3.5rem !important;
@@ -1041,7 +1039,6 @@ a {
     color: var(--color-primary);
 }
 
-/* Need card icons - Unified dark color */
 .card-icon i {
     color: var(--color-text) !important;
     font-size: 3.5rem !important;
@@ -1052,13 +1049,70 @@ a {
     color: var(--color-primary);
 }
 
-/* FAQ icons */
 .faq-item h3 i {
     color: var(--color-text) !important;
 }
 
 .faq-item:hover h3 i {
     color: var(--color-primary);
+}
+
+/* ===== Mobile Table Fix ===== */
+@media (max-width: 768px) {
+    .comparison-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .comparison-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: #FFFFFF;
+        border: 2px solid var(--color-border);
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+    
+    .comparison-row.header {
+        display: none;
+    }
+    
+    .comparison-row > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+    
+    .comparison-row > div:last-child {
+        border-bottom: none;
+    }
+    
+    .comparison-row > div:first-child {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--color-text);
+        border-bottom: 2px solid var(--color-primary);
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .comparison-row > div:nth-child(2)::before {
+        content: "yoobify:";
+        font-weight: 600;
+        color: var(--color-text-light);
+        margin-right: 0.5rem;
+    }
+    
+    .comparison-row > div:nth-child(3)::before {
+        content: "Others:";
+        font-weight: 600;
+        color: var(--color-text-light);
+        margin-right: 0.5rem;
+    }
 }
 
 /* ===== Responsive ===== */
@@ -1119,18 +1173,6 @@ a {
     
     .section {
         padding: 3rem 1rem;
-    }
-    
-    .comparison-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .comparison-row > div {
-        border-bottom: 1px solid var(--color-border);
-    }
-    
-    .comparison-row > div:last-child {
-        border-bottom: none;
     }
     
     .track-item {
